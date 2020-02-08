@@ -1,2 +1,2 @@
 # PBO-Praktikum-dengan-Java
-Latihan dan Tugas
+Latihan dan Tugas PBO Java
