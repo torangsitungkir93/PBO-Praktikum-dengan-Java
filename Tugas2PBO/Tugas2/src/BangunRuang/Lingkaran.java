@@ -1,4 +1,4 @@
-package Segitiga;
+package BangunRuang;
 
 /**
  *

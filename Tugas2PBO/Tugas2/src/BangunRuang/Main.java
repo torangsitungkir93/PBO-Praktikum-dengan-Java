@@ -1,4 +1,4 @@
-package Segitiga;
+package BangunRuang;
 
 import java.util.Scanner;
 
@@ -32,8 +32,8 @@ public class Main {
             System.out.println("--------------------------------------  ");
             System.out.println(" 5. Tampil Data Tabung ");
             System.out.println(" 6. Ubah Data Tabung");
-            System.out.println(" 7. Tampil Data Kerucut ");
-            System.out.println(" 8. Ubah Data Kerucut ");
+            System.out.println(" 7. Tampil Data Bola ");
+            System.out.println(" 8. Ubah Data Bola ");
             System.out.println(" 0. Exit");
 
             System.out.print(" Pilih : ");
