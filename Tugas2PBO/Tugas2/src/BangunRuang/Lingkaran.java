@@ -39,7 +39,7 @@ public class Lingkaran {
     }
     
     public float getDiameter() {
-        return this.diameter;
+        return this.diameter();
     }
 
     public float getLuasLingkaran() {
