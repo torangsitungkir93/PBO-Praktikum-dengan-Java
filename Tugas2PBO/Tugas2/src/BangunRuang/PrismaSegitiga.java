@@ -23,6 +23,18 @@ public class PrismaSegitiga extends Segitiga {
         System.out.println("\tVolume Prisma\t: " + this.getVolumePrisma());
     }
 
+    private float luasPrisma(){
+        float luas;
+        luas = (float) (2 * super.getLuasSegitiga() + (this.sisiTegak * super.getKelilingSegitiga()));
+        return luas;
+    }
+    
+    private double volumePrisma(){
+        double volume;
+        volume = super.getLuasSegitiga() * this.sisiTegak;
+        return volume;
+    }
+    
     public void setSisiTegak(double sisiTegak) {
         this.sisiTegak = sisiTegak;
     }
@@ -33,11 +45,11 @@ public class PrismaSegitiga extends Segitiga {
     }
 
     public double getLuasPrisma() {
-        return 2 * super.getLuasSegitiga() + (this.sisiTegak * super.getKelilingSegitiga());
+        return this.luasPrisma();
     }
 
     public double getVolumePrisma() {
-        return super.getLuasSegitiga() * this.sisiTegak;
+        return this.volumePrisma();
     }
 
 }

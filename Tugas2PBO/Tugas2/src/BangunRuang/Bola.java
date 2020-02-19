@@ -21,13 +21,25 @@ public class Bola extends Lingkaran {
         System.out.println("\tLuas Bola   : " + this.getLuasBola());
         System.out.println("\tVolume Bola : " + this.getVolBola());
     }
+    
+    private float luasBola(){
+        float luas;
+        luas = 4 * super.getLuasLingkaran();
+        return luas;
+    }
+    
+    private float volBola(){
+        float volume;
+        volume = (float) (4 / 3.0 * super.pi * super.rad * super.rad * super.rad);
+        return volume;
+    }
 
     public float getLuasBola() {
-        return 4 * super.getLuasLingkaran();
+        return this.luasBola();
     }
 
     public float getVolBola() {
-        return (float) (4 / 3.0 * super.pi * super.rad * super.rad * super.rad);
+        return this.volBola();
     }
 
 }

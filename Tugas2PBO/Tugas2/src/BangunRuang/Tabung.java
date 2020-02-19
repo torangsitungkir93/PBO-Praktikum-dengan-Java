@@ -22,16 +22,34 @@ public class Tabung extends Lingkaran {
         System.out.println("\tVolume Tabung : " + this.getVolTabung());
     }
 
+    public float luasSelimut(){
+        float luas;
+        luas = super.getKelilingLingkaran() * this.tinggi;
+        return luas;
+    }
+    
+    public float luasTabung(){
+        float luas;
+        luas = 2 * super.getLuasLingkaran() + this.getLuasSelimut();
+        return luas;
+    }
+    
+    public float volTabung(){
+        float vol;
+        vol = 2 * super.getLuasLingkaran() + this.getLuasSelimut();
+        return vol;
+    }
+    
     public float getLuasSelimut() {
-        return super.getKelilingLingkaran() * this.tinggi;
+        return this.luasSelimut();
     }
 
     public float getLuasTabung() {
-        return 2 * super.getLuasLingkaran() + this.getLuasSelimut();
+        return this.luasTabung();
     }
 
     public float getVolTabung() {
-        return super.getLuasLingkaran() * this.tinggi;
+        return this.volTabung();
     }
 
 }

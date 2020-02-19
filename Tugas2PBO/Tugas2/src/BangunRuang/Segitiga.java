@@ -17,13 +17,25 @@ public class Segitiga {
         this.alas = alas;
         this.tinggi = tinggi;
     }
+    
+    protected double luasSegitiga(){
+        float luas;
+        luas = (float) (this.alas * tinggi / 2);
+        return luas;
+    }
+    
+    protected double kelilingSegitiga(){
+        float kel;
+        kel = (float) (this.sisi1 + this.sisi2 + this.alas);
+        return kel;
+    }
 
     public double getLuasSegitiga() {
-        return this.alas * tinggi / 2;
+        return this.luasSegitiga();
     }
 
     public double getKelilingSegitiga() {
-        return this.sisi1 + this.sisi2 + this.alas;
+        return this.kelilingSegitiga();
     }
 
     public void showData() {

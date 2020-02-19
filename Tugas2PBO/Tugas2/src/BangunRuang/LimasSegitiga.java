@@ -25,8 +25,28 @@ public class LimasSegitiga extends Segitiga {
 
     // Angkapannya limas Segitiga  sama sisi
     // Rumus : luas alas * 3 kali luas alas segitiga sisi tegaknya
+    
+    
+    public double luasSisiTegak(){
+        double luas;
+        luas = 3 * super.getLuasSegitiga();
+        return luas;
+    }
+    
+    public double luasLimas(){
+        float limas;
+        limas = (float) (super.getLuasSegitiga() + this.getLuasSisiTegak());
+        return limas;
+    }
+    
+    public double volumeLimas(){
+        double volume;
+        volume = 1.0 / 3 * super.getLuasSegitiga() * this.sisiTegak;
+        return volume;
+    }
+    
     public double getLuasSisiTegak() {
-        return 3 * super.getLuasSegitiga();
+        return this.luasSisiTegak();
     }
 
     public void setSisiTegak(double sisiTegak) {
@@ -39,10 +59,10 @@ public class LimasSegitiga extends Segitiga {
     }
 
     public double getLuasLimas() {
-        return super.getLuasSegitiga() + this.getLuasSisiTegak();
+        return this.luasLimas();
     }
 
     public double getVolumeLimas() {
-        return 1.0 / 3 * super.getLuasSegitiga() * this.sisiTegak;
+        return this.volumeLimas();
     }
 }
