@@ -1,70 +1,85 @@
 
-
 import java.awt.Color;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class swing extends JFrame {
-    JLabel ljudul = new JLabel("INPUT DATA DIRI");
-    JTextField fnama = new JTextField(10);
-     JLabel lnama = new JLabel("Nama");
-     JLabel lnim = new JLabel("NIM");
-     JLabel ljk = new JLabel("Jenis kelamin");
-     JRadioButton rbpria = new JRadioButton("Laki - laki");
-     JRadioButton rbwanita = new JRadioButton("Perempuan");
-     
-     JLabel lagama = new JLabel("Agama");
-     String [] namaAgama = {"islam", "kristen", "katolik" , "hindu" , "budha"};
-     JComboBox cmbAgama = new JComboBox(namaAgama);
-     
-     JLabel lhobby = new JLabel("Hobby");
-     JCheckBox cbBola = new JCheckBox("Sepak Bola");
-     JCheckBox cbBasket = new JCheckBox("Basket");
-     JCheckBox cbBuluTangkis = new JCheckBox("Bulu Tangkis");
-    
-    JButton btnConfirm = new JButton( "Confirm");
-    
-    public swing () {
-        setTitle("Data Diri");
+
+    JLabel labelJudul = new JLabel("Form Peminatan Kelompok Study");
+    JTextField fieldNama = new JTextField(16);
+    JLabel labelNama = new JLabel("Nama");
+    JTextField fieldNim = new JTextField(9);
+    JLabel labelNim = new JLabel("NIM");
+    JTextField fieldAlamat = new JTextField(255);
+    JLabel labelAlamat = new JLabel("Alamat");
+    JLabel labelGender = new JLabel("Jenis kelamin");
+    JRadioButton rbPria = new JRadioButton("Laki - laki");
+    JRadioButton rbWanita = new JRadioButton("Perempuan");
+
+    JLabel labelAgama = new JLabel("Agama");
+    String[] namaAgama = {"Islam", "Kristen", "Katolik", "Hindu", "Buddha"};
+    JComboBox cmbAgama = new JComboBox(namaAgama);
+
+    JLabel labelKelStudy = new JLabel("Kelompok Study");
+    JCheckBox cbLinux = new JCheckBox("Linux");
+    JCheckBox cbITC = new JCheckBox("ITC");
+    JCheckBox cbMultimedia = new JCheckBox("Multimedia");
+    JCheckBox cbRobotik = new JCheckBox("Robotik");
+
+    JButton btnConfirm = new JButton("Confirm");
+    JButton btnCancel = new JButton("Cancel");
+
+    public swing() {
+        setTitle("Data Mahasiswa");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         setLayout(null);
-        setSize(600,400);
-        
+        setSize(800, 600);
+
         ButtonGroup group = new ButtonGroup();
-        group.add(rbpria); 
-        group.add(rbwanita);
-        
-        add(ljudul);
-        add(lnama);
-        add(fnama);
-        add(lnim);
-        add(ljk);
-        add(rbpria);
-        add(rbwanita);
-        add(lagama);
+        group.add(rbPria);
+        group.add(rbWanita);
+
+        add(labelJudul);
+        add(labelNim);
+        add(fieldNim);
+        add(labelNama);
+        add(fieldNama);
+        add(labelAgama);
         add(cmbAgama);
-        add(lhobby);
-        add(cbBasket);
-        add(cbBola);
-        add(cbBuluTangkis);
+        add(labelAlamat);
+        add(fieldAlamat);
+        add(labelGender);
+        add(rbPria);
+        add(rbWanita);
+        add(labelKelStudy);
+        add(cbLinux);
+        add(cbITC);
+        add(cbMultimedia);
+        add(cbRobotik);
         add(btnConfirm);
-        
-        ljudul.setBounds(200,25,200,30);
-        ljudul.setFont(new java.awt.Font("Times New Roman",0,24));
-        lnama.setBounds(50,100,120,20);
-        fnama.setBounds(170,100,150,20);
-        ljk.setBounds(50,130,120,20);
-        rbpria.setBounds(170,130,120,20);
-        rbwanita.setBounds(300,130,120,20);
-        lagama.setBounds(50,160,120,20);
-        cmbAgama.setBounds(170,160,120,20);
-        lhobby.setBounds(50,190,120,20);
-        cbBasket.setBounds(300,190,120,20);
-        cbBola.setBounds(430,190,120,20);
-        cbBuluTangkis.setBounds(170,190,120,20);
-        btnConfirm.setBounds(170,250,120,20);
- 
+        add(btnCancel);
+
+        labelJudul.setBounds(250, 25, 400, 30);
+        labelJudul.setFont(new java.awt.Font("Times New Roman", 0, 20));
+        labelNim.setBounds(250, 100, 120, 20);
+        fieldNim.setBounds(370, 100, 150, 20);
+        labelNama.setBounds(250, 130, 120, 20);
+        fieldNama.setBounds(370, 130, 150, 20);
+        labelAgama.setBounds(250, 160, 150, 20);
+        cmbAgama.setBounds(370, 160, 150, 20);
+        labelAlamat.setBounds(250, 190, 120, 20);
+        fieldAlamat.setBounds(370, 190, 150, 80);
+        labelGender.setBounds(250, 270, 120, 20);
+        rbPria.setBounds(370, 270, 120, 20);
+        rbWanita.setBounds(500, 270, 120, 20);
+        labelKelStudy.setBounds(250, 290, 120, 20);
+        cbLinux.setBounds(370, 290, 120, 20);
+        cbITC.setBounds(500, 290, 120, 20);
+        cbMultimedia.setBounds(370, 310, 120, 20);
+        cbRobotik.setBounds(500, 310, 120, 20);
+        btnConfirm.setBounds(250, 360, 120, 20);
+        btnCancel.setBounds(420, 360, 120, 20);
     }
-    
+
 }
