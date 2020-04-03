@@ -11,7 +11,7 @@ public class InputDataMahasiswa extends JFrame {
     JTextField tfNim, tfNama, tfAlamat;
     JButton bSimpan;
     JPanel panelForm, panelTombol;
-    String DBurl = "jdbc:mysql://localhost/praktikum";
+    String DBurl = "jdbc:mysql://localhost:3306/belajar_dbjava";
     String DBusername = "root";
     String DBpassword = "";
     Connection koneksi;
@@ -19,7 +19,7 @@ public class InputDataMahasiswa extends JFrame {
 
     public InputDataMahasiswa() {
         setTitle("Coba Database!");
-        setSize(400, 150);
+        setSize(600, 350);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -61,20 +61,20 @@ public class InputDataMahasiswa extends JFrame {
                     DBusername, DBpassword);
             statement = koneksi.createStatement();
             statement.executeUpdate("INSERT INTO mahasiswa VALUES "
-                    + "('"+ tfNim.getText() + "','" 
+                    + "('" + tfNim.getText() + "','"
                     + tfNama.getText() + "','"
                     + tfAlamat.getText() + "')"
             );
-            JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan!" , "Hasil" , JOptionPane.INFORMATION_MESSAGE);         
+            JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan!", "Hasil", JOptionPane.INFORMATION_MESSAGE);
             statement.close();
             koneksi.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Data gagal disimpan!" , "hasil", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Data gagal disimpan!", "hasil", JOptionPane.ERROR_MESSAGE);
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Driver tidak ditemukan!" , "hasil", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Driver tidak ditemukan!", "hasil", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     public static void main(String[] args) {
         new InputDataMahasiswa();
     }

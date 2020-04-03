@@ -6,10 +6,10 @@ import javax.swing.*;
 public class LihatDataMahasiswa extends JFrame{
 
     String[][] data = new String[500][3];
-    String[] kolom = {"Nim", "Nama", "Alamat"};
+    String[] kolom = {"nim", "nama", "alamat"};
     JTable tabel;
     JScrollPane scrollPane;
-    String DBurl = "jdbc:mysql://localhost/praktikum";
+    String DBurl = "jdbc:mysql://localhost:3306/belajar_dbjava";
     String DBusername = "root";
     String DBpassword = "";
     Connection koneksi;
@@ -18,7 +18,7 @@ public class LihatDataMahasiswa extends JFrame{
 
     public LihatDataMahasiswa() {
         
-        setTitle("asd");
+        setTitle("Data Mahasiswa !");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             koneksi = DriverManager.getConnection(DBurl,
