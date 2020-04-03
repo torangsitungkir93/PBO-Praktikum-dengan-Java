@@ -1,9 +1,9 @@
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.sql.*;
 import javax.swing.*;
 
 
-public class LihatDataMahasiswa {
+public class LihatDataMahasiswa extends JFrame{
 
     String[][] data = new String[500][3];
     String[] kolom = {"Nim", "Nama", "Alamat"};
@@ -17,7 +17,8 @@ public class LihatDataMahasiswa {
     ResultSet resultSet;
 
     public LihatDataMahasiswa() {
-        setTitle("Data Mahasiswa!");
+        
+        setTitle("asd");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             koneksi = DriverManager.getConnection(DBurl,
@@ -35,12 +36,9 @@ public class LihatDataMahasiswa {
             statement.close();
             koneksi.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Data Gagal
-            Ditampilkan!", "Hasil", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Data gagal ditampilkan !" , "Hasil", JOptionPane.ERROR_MESSAGE);
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Driver Tidak
-            Ditemukan!", "Hasil", JOptionPane.ERROR_MESSAGE);
-        }
+            JOptionPane.showMessageDialog(null, "Driver Tidak ditemukan !" , "Hasil", JOptionPane.ERROR_MESSAGE);        }
         tabel = new JTable(data, kolom);
         scrollPane = new JScrollPane(tabel);
 
