@@ -4,6 +4,22 @@ import java.util.Scanner;
 
 /**
  *
+public class Main {
+
+    public static void main(String[] args) {
+        int choice;
+
+        Scanner in = new Scanner(System.in);
+
+        // Inputan sisi 1,sisi 2,alas,tinggi,SisiTegak
+        PrismaSegitiga prisma1 = new PrismaSegitiga(10, 8, 6, 8, 12);
+        // Limas Segitiga Anggapannya Segitiga sama sisi
+        LimasSegitiga limas1 = new LimasSegitiga(8, 8, 8, 10, 10);
+        // Instance Tabung
+        Tabung tabung1 = new Tabung(10, 30);
+        // Instance Bola
+        Bola bola1 = new Bola(14);
+
  * @author Torangto Situngkir
  */
 public class Main {
