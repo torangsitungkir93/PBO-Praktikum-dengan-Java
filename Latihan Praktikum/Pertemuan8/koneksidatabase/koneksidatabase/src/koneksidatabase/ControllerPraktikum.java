@@ -29,7 +29,10 @@ public class ControllerPraktikum {
                 String nim = viewpraktikum.getNim();
                 String nama = viewpraktikum.getNamaMhs();
                 String alamat = viewpraktikum.getAlamatMhs();
-                modelpraktikum.insertMahasiswa(nim, nama, alamat);
+                String jk = viewpraktikum.getJK();
+                String agama = viewpraktikum.getAgama();
+                        
+                modelpraktikum.insertMahasiswa(nim, nama, alamat,jk,agama);
 
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());

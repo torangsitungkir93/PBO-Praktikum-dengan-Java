@@ -1,4 +1,3 @@
-
 package koneksidatabase;
 
 import java.sql.Connection;
@@ -8,90 +7,98 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-
 public class ModelPraktikum {
+
     //mengkoneksikan ke database
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost/belajar_dbjavamvc";//nama database kita di slash terakhir
     static final String USER = "root";
     static final String PASS = "";
-    
+
     Connection koneksi;
     Statement statement;//untuk perintah query
 
     public ModelPraktikum() {
-        try{
+        try {
             Class.forName(JDBC_DRIVER);
             koneksi = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Koneksi Berhasil");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             System.out.println("Koneksi Gagal");
         }
     }
-    public void insertMahasiswa(String nim, String nama, String alamat){
+
+    public void insertMahasiswa(String nim, String nama, String alamat, String jk, String agama) {
         try {
-           String query = "INSERT INTO `mahasiswa`(`nim`, `nama`, `alamat`) VALUES ('"+nim+"','"+nama+"','"+alamat+"')";//value 1 (id diskip)
-           //String '"+String+"' kalau Int "+int+"
-           statement = (Statement) koneksi.createStatement();
-           statement.executeUpdate(query); //execute querynya
-            System.out.println("Berhasil ditambahkan");
-            JOptionPane.showMessageDialog(null, "Data Berhasil");
+            if ("".equals(nim) || "".equals(nama) || "".equals(alamat)) {
+                System.out.println("Gagal ditambahkan");
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+            } else {
+                String query = "INSERT INTO `mahasiswa`(`nim`, `nama`, `alamat`,`jk`,`agama`) VALUES ('" + nim + "','" + nama + "','" + alamat + "','" + jk + "','" + agama + "')";//value 1 (id diskip)
+                //String '"+String+"' kalau Int "+int+"
+                statement = (Statement) koneksi.createStatement();
+                statement.executeUpdate(query); //execute querynya
+                System.out.println("Berhasil ditambahkan");
+                JOptionPane.showMessageDialog(null, "Data Berhasil");
+            }
         } catch (Exception sql) {
-            System.out.println(sql.getMessage());   
+            System.out.println(sql.getMessage());
             JOptionPane.showMessageDialog(null, sql.getMessage());
         }
     }
-    
-    public String[][] readMahasiswa(){
-        try{
+
+    public String[][] readMahasiswa() {
+        try {
             int jmlData = 0;//menampung jumlah data
-            
-            String data[][] = new String[getBanyakData()][3]; //baris, kolom nya ada 3
-            
-            String query = "Select * from`mahasiswa`"; //pengambilan dara dalam java dari database
+
+            String data[][] = new String[getBanyakData()][5]; //baris, kolom nya ada 3
+
+            String query = "Select * from `mahasiswa`"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){ //lanjut kedata selanjutnya jmlData bertambah
+            while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("nim"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][1] = resultSet.getString("nama");                
-                data[jmlData][2] = resultSet.getString("alamat");
+                data[jmlData][1] = resultSet.getString("nama");
+                data[jmlData][2] = resultSet.getString("jk");
+                data[jmlData][3] = resultSet.getString("alamat");
+                data[jmlData][4] = resultSet.getString("agama");
                 jmlData++; //barisnya berpindah terus
             }
             return data;
-               
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("SQL Error");
             return null;
         }
     }
-    
-    public int getBanyakData(){//menghitung jumlah baris
+
+    public int getBanyakData() {//menghitung jumlah baris
         int jmlData = 0;
-        try{
+        try {
             statement = koneksi.createStatement();
             String query = "Select * from `mahasiswa`"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){ //lanjut kedata selanjutnya jmlData bertambah
+            while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 jmlData++;
             }
             return jmlData;
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("SQL Error");
             return 0;
         }
     }
-    
-    public void deleteMahasiswa (String nim) {
-        try{
-            String query = "DELETE FROM `mahasiswa` WHERE `nim` = '"+nim+"'";
+
+    public void deleteMahasiswa(String nim) {
+        try {
+            String query = "DELETE FROM `mahasiswa` WHERE `nim` = '" + nim + "'";
             statement = koneksi.createStatement();
             statement.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Berhasil Dihapus");
-            
-        }catch(SQLException sql) {
+
+        } catch (SQLException sql) {
             System.out.println(sql.getMessage());
         }
     }
