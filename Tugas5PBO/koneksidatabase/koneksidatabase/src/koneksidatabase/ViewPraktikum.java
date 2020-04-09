@@ -33,6 +33,8 @@ public class ViewPraktikum extends JFrame {
 
     JButton btnTambahPanel = new JButton("Tambah");
     JButton btnBatalPanel = new JButton("Batal");
+    JButton btnUbahPanel = new JButton("Ubah");
+    JButton btnHapusPanel = new JButton("Hapus");
 
     JTable tabel;
     DefaultTableModel tableModel;
@@ -85,12 +87,15 @@ public class ViewPraktikum extends JFrame {
         labelAgama.setBounds(5, 125, 170, 20);
         add(cmbAgama);
         cmbAgama.setBounds(110, 125, 170, 20);
-        
+        // Kumpulan Tombol
         add(btnTambahPanel);
-        btnTambahPanel.setBounds(20, 170, 90, 20);
-
+        btnTambahPanel.setBounds(30, 170, 90, 20);
+        add(btnUbahPanel);
+        btnUbahPanel.setBounds(130, 170, 90, 20);
+        add(btnHapusPanel);
+        btnHapusPanel.setBounds(230, 170, 90, 20);
         add(btnBatalPanel);
-        btnBatalPanel.setBounds(130, 170, 90, 20);
+        btnBatalPanel.setBounds(330, 170, 90, 20);
     }
 
     public String getNim() {
