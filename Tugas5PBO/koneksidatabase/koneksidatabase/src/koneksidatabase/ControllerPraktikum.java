@@ -97,14 +97,7 @@ public class ControllerPraktikum {
         viewpraktikum.btnBatalPanel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nim = viewpraktikum.getNim();
-                String nama = viewpraktikum.getNamaMhs();
-                String alamat = viewpraktikum.getAlamatMhs();
-                String jk = viewpraktikum.getJK();
-                String agama = viewpraktikum.getAgama();
-
-                modelpraktikum.deleteMahasiswa(nim);
-                
+                resetForm();
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
                 
@@ -142,6 +135,10 @@ public class ControllerPraktikum {
     public void resetForm(){
         viewpraktikum.tfnim.setText("");
         viewpraktikum.tfNamaMhs.setText("");
+        viewpraktikum.rbPria.setSelected(false);
+        viewpraktikum.rbWanita.setSelected(false);
+        viewpraktikum.tfAlamatMhs.setText("");
+        viewpraktikum.cmbAgama.setSelectedItem("--Pilih--");
     }
 
 }
