@@ -49,17 +49,19 @@ public class ControllerPraktikum {
                 String dataterpilih = viewpraktikum.tabel.getValueAt(baris, 0).toString();
 
                 System.out.println(dataterpilih);
-
-                int input = JOptionPane.showConfirmDialog(null,
-                        "Apa anda ingin menghapus NIM" + dataterpilih + "?", "Pilih Opsi...", JOptionPane.YES_NO_OPTION);
-
-                if (input == 0) {
-                    modelpraktikum.deleteMahasiswa(dataterpilih);
-                    String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
-                    viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
-                } else {
-                    JOptionPane.showMessageDialog(null, "Tidak Jadi Dihapus");
-                }
+                // isi ke kolom input
+                
+                
+//                int input = JOptionPane.showConfirmDialog(null,
+//                        "Apa anda ingin menghapus NIM" + dataterpilih + "?", "Pilih Opsi...", JOptionPane.YES_NO_OPTION);
+//
+//                if (input == 0) {
+//                    modelpraktikum.deleteMahasiswa(dataterpilih);
+//                    String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
+//                    viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Tidak Jadi Dihapus");
+//                }
             }
         }
         );

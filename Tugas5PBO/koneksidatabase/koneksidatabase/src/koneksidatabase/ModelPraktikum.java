@@ -72,6 +72,31 @@ public class ModelPraktikum {
             return null;
         }
     }
+    
+     public String[][] readMahasiswa() {
+        try {
+            int jmlData = 0;//menampung jumlah data
+
+            String data[][] = new String[getBanyakData()][5]; //baris, kolom nya ada 3
+
+            String query = "Select * from `mahasiswa`"; //pengambilan dara dalam java dari database
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
+                data[jmlData][0] = resultSet.getString("nim"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][1] = resultSet.getString("nama");
+                data[jmlData][2] = resultSet.getString("jk");
+                data[jmlData][3] = resultSet.getString("alamat");
+                data[jmlData][4] = resultSet.getString("agama");
+                jmlData++; //barisnya berpindah terus
+            }
+            return data;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+        }
+    }
 
     public int getBanyakData() {//menghitung jumlah baris
         int jmlData = 0;
