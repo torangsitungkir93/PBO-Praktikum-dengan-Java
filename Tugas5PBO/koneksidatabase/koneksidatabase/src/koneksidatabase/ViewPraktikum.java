@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class ViewPraktikum extends JFrame {
 
     JLabel lNim = new JLabel("Nim  ");
+    JLabel lJudul = new JLabel("Data Mahasiswa");
     JTextField tfnim = new JTextField();
     JLabel lNamaMhs = new JLabel("Nama Mahasiswa ");
     JTextField tfNamaMhs = new JTextField();
@@ -60,42 +61,45 @@ public class ViewPraktikum extends JFrame {
 
         //TABEL
         add(scrollPane);
-        scrollPane.setBounds(30, 205, 580, 300);
+        scrollPane.setBounds(30, 235, 580, 300);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
+        add(lJudul);
+        lJudul.setBounds(95,5,200,20);
+        lJudul.setFont(new java.awt.Font("Times New Roman", 0, 25));
         add(lNim);
-        lNim.setBounds(5, 5, 90, 20);
+        lNim.setBounds(35, 35, 90, 20);
         add(tfnim);
-        tfnim.setBounds(110, 5, 170, 20);
+        tfnim.setBounds(140, 35, 170, 20);
         add(lNamaMhs);
-        lNamaMhs.setBounds(5, 30, 90, 20);
+        lNamaMhs.setBounds(35, 60, 90, 20);
         add(tfNamaMhs);
-        tfNamaMhs.setBounds(110, 30, 170, 20);
+        tfNamaMhs.setBounds(140, 60, 170, 20);
         add(lAlamatMhs);
-        lAlamatMhs.setBounds(5, 55, 90, 20);
+        lAlamatMhs.setBounds(35, 85, 90, 20);
         add(tfAlamatMhs);
-        tfAlamatMhs.setBounds(110, 55, 170, 40);
+        tfAlamatMhs.setBounds(140, 85, 170, 40);
         // Jenis Kelamin
         add(labelGender);
-        labelGender.setBounds(5, 100, 90, 20);
+        labelGender.setBounds(35, 130, 90, 20);
         add(rbPria);
-        rbPria.setBounds(106, 100, 80, 20);
+        rbPria.setBounds(136, 130, 80, 20);
         add(rbWanita);
-        rbWanita.setBounds(190, 100, 100, 20);
+        rbWanita.setBounds(220, 130, 100, 20);
         // Agama
         add(labelAgama);
-        labelAgama.setBounds(5, 125, 170, 20);
+        labelAgama.setBounds(35, 155, 170, 20);
         add(cmbAgama);
-        cmbAgama.setBounds(110, 125, 170, 20);
+        cmbAgama.setBounds(140, 155, 170, 20);
         // Kumpulan Tombol
         add(btnTambahPanel);
-        btnTambahPanel.setBounds(30, 170, 90, 20);
+        btnTambahPanel.setBounds(30, 200, 90, 25);
         add(btnUbahPanel);
-        btnUbahPanel.setBounds(130, 170, 90, 20);
+        btnUbahPanel.setBounds(130, 200, 90, 25);
         add(btnHapusPanel);
-        btnHapusPanel.setBounds(230, 170, 90, 20);
+        btnHapusPanel.setBounds(230, 200, 90, 25);
         add(btnBatalPanel);
-        btnBatalPanel.setBounds(330, 170, 90, 20);
+        btnBatalPanel.setBounds(330, 200, 90, 25);
     }
 
     public String getNim() {
