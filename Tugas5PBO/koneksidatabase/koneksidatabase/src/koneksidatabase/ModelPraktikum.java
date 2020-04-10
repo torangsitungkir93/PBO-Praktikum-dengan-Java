@@ -31,7 +31,7 @@ public class ModelPraktikum {
 
     public void insertMahasiswa(String nim, String nama, String alamat, String jk, String agama) {
         try {
-            if ("".equals(nim) || "".equals(nama) || "".equals(alamat)) {
+            if ("".equals(nim) || "".equals(nama) || "".equals(alamat) || "".equals(agama)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
@@ -50,7 +50,7 @@ public class ModelPraktikum {
     
     public void updateMahasiswa(String nim, String nama, String alamat, String jk, String agama) {
         try {
-            if ("".equals(nim) || "".equals(nama) || "".equals(alamat)) {
+            if ("".equals(nim) || "".equals(nama) || "".equals(alamat)|| "".equals(agama)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {//`nim`, `nama`, `alamat`,`jk`,`agama
