@@ -113,7 +113,10 @@ public class ModelPraktikum {
 
     public void deleteMahasiswa(String nim) {
         try {
-            String query = "DELETE FROM `mahasiswa` WHERE `nim` = '" + nim + "'";
+            if("".equals(nim)){
+                JOptionPane.showMessageDialog(null, "Gagal Dihapus");
+            }
+            String query = "DELETE FROM `mahasiswa` WHERE `nim` ='" + nim + "'";
             statement = koneksi.createStatement();
             statement.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Berhasil Dihapus");

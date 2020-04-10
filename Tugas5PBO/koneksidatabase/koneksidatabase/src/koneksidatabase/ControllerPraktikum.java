@@ -98,6 +98,7 @@ public class ControllerPraktikum {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetForm();
+                
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
                 
