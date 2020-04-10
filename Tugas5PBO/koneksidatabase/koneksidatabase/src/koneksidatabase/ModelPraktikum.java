@@ -48,18 +48,19 @@ public class ModelPraktikum {
         }
     }
     
-    public void insertMahasiswa(String nim, String nama, String alamat, String jk, String agama) {
+    public void updateMahasiswa(String nim, String nama, String alamat, String jk, String agama) {
         try {
             if ("".equals(nim) || "".equals(nama) || "".equals(alamat)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
-            } else {
-                String query = "INSERT INTO `mahasiswa`(`nim`, `nama`, `alamat`,`jk`,`agama`) VALUES ('" + nim + "','" + nama + "','" + alamat + "','" + jk + "','" + agama + "')";//value 1 (id diskip)
+            } else {//`nim`, `nama`, `alamat`,`jk`,`agama
+                String query = "UPDATE `mahasiswa` SET nama='"+nama+"',alamat='"+alamat+"',jk='"+jk+"',agama='"+agama+
+                                "' WHERE nim='"+nim+"'"; 
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
-                System.out.println("Berhasil ditambahkan");
-                JOptionPane.showMessageDialog(null, "Data Berhasil");
+                System.out.println("Berhasil Diedit");
+                JOptionPane.showMessageDialog(null, "Data Berhasil Diedit");
             }
         } catch (Exception sql) {
             System.out.println(sql.getMessage());
