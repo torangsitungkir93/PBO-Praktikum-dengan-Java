@@ -76,6 +76,40 @@ public class ControllerPraktikum {
                 
             }
         });
+        
+        viewpraktikum.btnHapusPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nim = viewpraktikum.getNim();
+                String nama = viewpraktikum.getNamaMhs();
+                String alamat = viewpraktikum.getAlamatMhs();
+                String jk = viewpraktikum.getJK();
+                String agama = viewpraktikum.getAgama();
+
+                modelpraktikum.deleteMahasiswa(nim);
+                
+                String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
+                viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
+                
+            }
+        });
+        
+        viewpraktikum.btnBatalPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nim = viewpraktikum.getNim();
+                String nama = viewpraktikum.getNamaMhs();
+                String alamat = viewpraktikum.getAlamatMhs();
+                String jk = viewpraktikum.getJK();
+                String agama = viewpraktikum.getAgama();
+
+                modelpraktikum.deleteMahasiswa(nim);
+                
+                String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
+                viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
+                
+            }
+        });
     }
 
     public void listenerTabel() {
