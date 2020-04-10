@@ -134,14 +134,14 @@ public class ControllerPraktikum {
                     viewpraktikum.rbWanita.setSelected(false);
                 }
                 viewpraktikum.tfAlamatMhs.setText(data[row][3].toString());
-                for (int i = 0; i < 5; i++) {
-                    if (viewpraktikum.namaAgama[i].equals(data[row][4])) {
-
-                    }
-                }
                 viewpraktikum.cmbAgama.setSelectedItem(data[row][4]);
             }
         });
+    }
+    
+    public void resetForm(){
+        viewpraktikum.tfnim.setText("");
+        viewpraktikum.tfNamaMhs.setText("");
     }
 
 }

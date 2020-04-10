@@ -29,7 +29,7 @@ public class ViewPraktikum extends JFrame {
     JTextField tfAlamatMhs = new JTextField();
 
     JLabel labelAgama = new JLabel("Agama");
-    String[] namaAgama = {"Islam", "Kristen", "Katolik", "Hindu", "Buddha"};
+    String[] namaAgama = {"--Pilih--", "Islam", "Kristen", "Katolik", "Hindu", "Buddha"};
     JComboBox cmbAgama = new JComboBox(namaAgama);
 
     JButton btnTambahPanel = new JButton("Tambah");
@@ -40,7 +40,7 @@ public class ViewPraktikum extends JFrame {
     JTable tabel;
     DefaultTableModel tableModel;
     JScrollPane scrollPane;  //buat scroll
-    Object namaKolom[] = {"NIM", "Nama","Jenis Kelamin","Alamat","Agama"}; //membuat kolom dalam array
+    Object namaKolom[] = {"NIM", "Nama", "Jenis Kelamin", "Alamat", "Agama"}; //membuat kolom dalam array
 
     public ViewPraktikum() {
 
@@ -53,11 +53,10 @@ public class ViewPraktikum extends JFrame {
         setVisible(true);
         setLayout(null);
         setSize(655, 650);
-        
+
         ButtonGroup group = new ButtonGroup();
         group.add(rbPria);
         group.add(rbWanita);
-
 
         //TABEL
         add(scrollPane);
@@ -65,7 +64,7 @@ public class ViewPraktikum extends JFrame {
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         add(lJudul);
-        lJudul.setBounds(95,5,200,20);
+        lJudul.setBounds(95, 5, 200, 20);
         lJudul.setFont(new java.awt.Font("Times New Roman", 0, 25));
         add(lNim);
         lNim.setBounds(35, 35, 90, 20);
@@ -113,18 +112,20 @@ public class ViewPraktikum extends JFrame {
     public String getAlamatMhs() {
         return tfAlamatMhs.getText();
     }
-    
-    public String getAgama(){
+
+    public String getAgama() {
+        if (cmbAgama.getSelectedItem().equals("--Pilih--")) {
+            cmbAgama.setSelectedItem("");
+        } 
         return (String) cmbAgama.getSelectedItem();
     }
-    
-    public String getJK(){
-        if(rbPria.isSelected()){
+
+    public String getJK() {
+        if (rbPria.isSelected()) {
             return "Laki-laki";
-        }
-        else{
+        } else {
             return "Perempuan";
         }
     }
-    
+
 }
