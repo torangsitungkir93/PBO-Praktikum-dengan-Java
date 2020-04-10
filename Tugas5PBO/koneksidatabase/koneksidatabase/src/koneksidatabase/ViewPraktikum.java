@@ -115,9 +115,10 @@ public class ViewPraktikum extends JFrame {
 
     public String getAgama() {
         if (cmbAgama.getSelectedItem().equals("--Pilih--")) {
-            cmbAgama.setSelectedItem("");
-        } 
-        return (String) cmbAgama.getSelectedItem();
+            return "";
+        } else {
+            return (String) cmbAgama.getSelectedItem();
+        }
     }
 
     public String getJK() {
