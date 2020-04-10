@@ -47,6 +47,25 @@ public class ModelPraktikum {
             JOptionPane.showMessageDialog(null, sql.getMessage());
         }
     }
+    
+    public void insertMahasiswa(String nim, String nama, String alamat, String jk, String agama) {
+        try {
+            if ("".equals(nim) || "".equals(nama) || "".equals(alamat)) {
+                System.out.println("Gagal ditambahkan");
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+            } else {
+                String query = "INSERT INTO `mahasiswa`(`nim`, `nama`, `alamat`,`jk`,`agama`) VALUES ('" + nim + "','" + nama + "','" + alamat + "','" + jk + "','" + agama + "')";//value 1 (id diskip)
+                //String '"+String+"' kalau Int "+int+"
+                statement = (Statement) koneksi.createStatement();
+                statement.executeUpdate(query); //execute querynya
+                System.out.println("Berhasil ditambahkan");
+                JOptionPane.showMessageDialog(null, "Data Berhasil");
+            }
+        } catch (Exception sql) {
+            System.out.println(sql.getMessage());
+            JOptionPane.showMessageDialog(null, sql.getMessage());
+        }
+    }
 
     public String[][] readMahasiswa() {
         try {
@@ -73,13 +92,14 @@ public class ModelPraktikum {
         }
     }
     
-     public String[][] readMahasiswa() {
+    // 
+     public String[][] readMahasiswa(String nim) {
         try {
             int jmlData = 0;//menampung jumlah data
 
             String data[][] = new String[getBanyakData()][5]; //baris, kolom nya ada 3
 
-            String query = "Select * from `mahasiswa`"; //pengambilan dara dalam java dari database
+            String query = "Select * from `mahasiswa` where nim="+nim; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("nim"); //kolom nama harus sama besar kecilnya dgn database

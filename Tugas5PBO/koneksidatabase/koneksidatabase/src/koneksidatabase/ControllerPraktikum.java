@@ -1,4 +1,4 @@
- package koneksidatabase;
+package koneksidatabase;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,39 +31,82 @@ public class ControllerPraktikum {
                 String alamat = viewpraktikum.getAlamatMhs();
                 String jk = viewpraktikum.getJK();
                 String agama = viewpraktikum.getAgama();
-                        
-                modelpraktikum.insertMahasiswa(nim, nama, alamat,jk,agama);
+
+                modelpraktikum.insertMahasiswa(nim, nama, alamat, jk, agama);
 
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
+                
             }
         });
-
-        viewpraktikum.tabel.addMouseListener(new MouseAdapter() {
+        
+        viewpraktikum.btnTambahPanel.addActionListener(new ActionListener() {
             @Override
+            public void actionPerformed(ActionEvent e) {
+                String nim = viewpraktikum.getNim();
+                String nama = viewpraktikum.getNamaMhs();
+                String alamat = viewpraktikum.getAlamatMhs();
+                String jk = viewpraktikum.getJK();
+                String agama = viewpraktikum.getAgama();
+
+                modelpraktikum.insertMahasiswa(nim, nama, alamat, jk, agama);
+
+                String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
+                viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
+                
+            }
+        });
+        
+        viewpraktikum.btnUbahPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nim = viewpraktikum.getNim();
+                String nama = viewpraktikum.getNamaMhs();
+                String alamat = viewpraktikum.getAlamatMhs();
+                String jk = viewpraktikum.getJK();
+                String agama = viewpraktikum.getAgama();
+
+                modelpraktikum.insertMahasiswa(nim, nama, alamat, jk, agama);
+
+                String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
+                viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
+                
+            }
+        });
+        
+        listenerTabel();
+    }
+
+    public void listenerTabel() {
+        String data[][] = modelpraktikum.readMahasiswa();
+        String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
+        viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
+        viewpraktikum.tabel.addMouseListener(new MouseAdapter() {
+
             public void mouseClicked(MouseEvent e) {
                 super.mousePressed(e);
-                int baris = viewpraktikum.tabel.getSelectedRow();
-                int kolom = viewpraktikum.tabel.getSelectedColumn();
+                int row = viewpraktikum.tabel.getSelectedRow();
+                int col = viewpraktikum.tabel.getSelectedColumn();
 
-                String dataterpilih = viewpraktikum.tabel.getValueAt(baris, 0).toString();
+                viewpraktikum.tfnim.setText(data[row][0].toString());
+                viewpraktikum.tfnim.setEnabled(false);
+                viewpraktikum.tfNamaMhs.setText(data[row][1].toString());
+                if (data[row][2].toString().equals("Perempuan")) {
+                    viewpraktikum.rbWanita.setSelected(true);
+                    viewpraktikum.rbPria.setSelected(false);
+                } else if (data[row][2].toString().equals("Laki-laki")) {
+                    viewpraktikum.rbPria.setSelected(true);
+                    viewpraktikum.rbWanita.setSelected(false);
+                }
+                viewpraktikum.tfAlamatMhs.setText(data[row][3].toString());
+                for (int i = 0; i < 5; i++) {
+                    if (viewpraktikum.namaAgama[i].equals(data[row][4])) {
 
-                System.out.println(dataterpilih);
-                // isi ke kolom input
-                
-                
-//                int input = JOptionPane.showConfirmDialog(null,
-//                        "Apa anda ingin menghapus NIM" + dataterpilih + "?", "Pilih Opsi...", JOptionPane.YES_NO_OPTION);
-//
-//                if (input == 0) {
-//                    modelpraktikum.deleteMahasiswa(dataterpilih);
-//                    String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
-//                    viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Tidak Jadi Dihapus");
-//                }
+                    }
+                }
+                viewpraktikum.cmbAgama.setSelectedItem(data[row][4]);
             }
-        }
-        );
+        });
     }
+
 }
