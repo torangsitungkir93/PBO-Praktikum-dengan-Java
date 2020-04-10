@@ -47,15 +47,15 @@ public class ModelPraktikum {
             JOptionPane.showMessageDialog(null, sql.getMessage());
         }
     }
-    
+
     public void updateMahasiswa(String nim, String nama, String alamat, String jk, String agama) {
         try {
-            if ("".equals(nim) || "".equals(nama) || "".equals(alamat)|| "".equals(agama)) {
+            if ("".equals(nim) || "".equals(nama) || "".equals(alamat) || "".equals(agama)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {//`nim`, `nama`, `alamat`,`jk`,`agama
-                String query = "UPDATE `mahasiswa` SET nama='"+nama+"',alamat='"+alamat+"',jk='"+jk+"',agama='"+agama+
-                                "' WHERE nim='"+nim+"'"; 
+                String query = "UPDATE `mahasiswa` SET nama='" + nama + "',alamat='" + alamat + "',jk='" + jk + "',agama='" + agama
+                        + "' WHERE nim='" + nim + "'";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -92,7 +92,7 @@ public class ModelPraktikum {
             return null;
         }
     }
-    
+
     public int getBanyakData() {//menghitung jumlah baris
         int jmlData = 0;
         try {
@@ -113,14 +113,14 @@ public class ModelPraktikum {
 
     public void deleteMahasiswa(String nim) {
         try {
-            if("".equals(nim)){
+            if ("".equals(nim)) {
                 JOptionPane.showMessageDialog(null, "Gagal Dihapus");
+            } else {
+                String query = "DELETE FROM `mahasiswa` WHERE `nim` ='" + nim + "'";
+                statement = koneksi.createStatement();
+                statement.executeUpdate(query);
+                JOptionPane.showMessageDialog(null, "Berhasil Dihapus");
             }
-            String query = "DELETE FROM `mahasiswa` WHERE `nim` ='" + nim + "'";
-            statement = koneksi.createStatement();
-            statement.executeUpdate(query);
-            JOptionPane.showMessageDialog(null, "Berhasil Dihapus");
-
         } catch (SQLException sql) {
             System.out.println(sql.getMessage());
         }

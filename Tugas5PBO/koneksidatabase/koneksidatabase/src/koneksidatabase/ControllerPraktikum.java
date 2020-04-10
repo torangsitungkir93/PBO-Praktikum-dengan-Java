@@ -23,25 +23,7 @@ public class ControllerPraktikum {
             JOptionPane.showMessageDialog(null, "Data Tidak Ada");
         }
 
-                
         listenerTabel();
-        
-        viewpraktikum.btnTambahPanel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String nim = viewpraktikum.getNim();
-                String nama = viewpraktikum.getNamaMhs();
-                String alamat = viewpraktikum.getAlamatMhs();
-                String jk = viewpraktikum.getJK();
-                String agama = viewpraktikum.getAgama();
-
-                modelpraktikum.insertMahasiswa(nim, nama, alamat, jk, agama);
-
-                String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
-                viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
-                
-            }
-        });
         
         viewpraktikum.btnTambahPanel.addActionListener(new ActionListener() {
             @Override
