@@ -19,12 +19,11 @@ public class ControllerPraktikum {
         if (modelpraktikum.getBanyakData() != 0) {
             String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
             viewpraktikum.tabel.setModel((new JTable(dataMahasiswa, viewpraktikum.namaKolom)).getModel());
+            listenerTabel();
         } else {
             JOptionPane.showMessageDialog(null, "Data Tidak Ada");
         }
 
-        listenerTabel();
-        
         viewpraktikum.btnTambahPanel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,7 +37,7 @@ public class ControllerPraktikum {
 
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
-                
+                listenerTabel();
             }
         });
         
@@ -55,7 +54,7 @@ public class ControllerPraktikum {
                 
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
-                
+                listenerTabel();
             }
         });
         
@@ -72,7 +71,8 @@ public class ControllerPraktikum {
                 
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
-                
+                resetForm();
+                listenerTabel();
             }
         });
         
@@ -83,7 +83,7 @@ public class ControllerPraktikum {
                 
                 String dataMahasiswa[][] = modelpraktikum.readMahasiswa();
                 viewpraktikum.tabel.setModel(new JTable(dataMahasiswa, viewpraktikum.namaKolom).getModel());
-                
+                listenerTabel();
             }
         });
     }
@@ -117,6 +117,7 @@ public class ControllerPraktikum {
     
     public void resetForm(){
         viewpraktikum.tfnim.setText("");
+        viewpraktikum.tfnim.setEnabled(true);
         viewpraktikum.tfNamaMhs.setText("");
         viewpraktikum.rbPria.setSelected(false);
         viewpraktikum.rbWanita.setSelected(false);

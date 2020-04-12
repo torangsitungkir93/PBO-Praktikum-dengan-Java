@@ -40,7 +40,7 @@ public class ModelPraktikum {
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
                 System.out.println("Berhasil ditambahkan");
-                JOptionPane.showMessageDialog(null, "Data Berhasil");
+                JOptionPane.showMessageDialog(null, "Data Berhasil ditambah");
             }
         } catch (Exception sql) {
             System.out.println(sql.getMessage());
@@ -114,15 +114,16 @@ public class ModelPraktikum {
     public void deleteMahasiswa(String nim) {
         try {
             if ("".equals(nim)) {
-                JOptionPane.showMessageDialog(null, "Gagal Dihapus");
+                JOptionPane.showMessageDialog(null, "Gagal Dihapus\nPastikan Isi NIM yang ingin dihapus benar !");
             } else {
                 String query = "DELETE FROM `mahasiswa` WHERE `nim` ='" + nim + "'";
                 statement = koneksi.createStatement();
                 statement.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "Berhasil Dihapus");
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
             }
         } catch (SQLException sql) {
             System.out.println(sql.getMessage());
+            JOptionPane.showMessageDialog(null, sql.getMessage());
         }
     }
 }

@@ -33,7 +33,7 @@ public class ViewPraktikum extends JFrame {
     JComboBox cmbAgama = new JComboBox(namaAgama);
 
     JButton btnTambahPanel = new JButton("Tambah");
-    JButton btnBatalPanel = new JButton("Batal");
+    JButton btnBatalPanel = new JButton("Reset");
     JButton btnUbahPanel = new JButton("Ubah");
     JButton btnHapusPanel = new JButton("Hapus");
 
