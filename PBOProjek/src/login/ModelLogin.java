@@ -56,7 +56,6 @@ public class ModelLogin {
                     if (username.equals(rs.getString("username")) && pass.equals(rs.getString("password"))) {
                         JOptionPane.showMessageDialog(null, "berhasil login");
                         login=1;
-                        new MVCDashboardAdmin();
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "username atau password salah");

@@ -36,6 +36,12 @@ public class ControllerLogin{
                 String password = viewLogin.getPassword();
 
                 modelLogin.cekLogin(username, password);
+                
+                 if(modelLogin.cekLogin()==1){
+                    viewLogin.setVisible(false);
+                    
+                    MVCDashboardAdmin dashboardAdmin = new MVCDashboardAdmin();
+                }
             }
         });
     }

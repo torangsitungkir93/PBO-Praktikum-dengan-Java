@@ -21,10 +21,6 @@ public class Main {
         ViewLogin viewLogin = new ViewLogin();
         ModelLogin modelLogin = new ModelLogin();
         new ControllerLogin(modelLogin,viewLogin);
-        if(modelLogin.cekLogin()==1){
-            viewLogin.setVisible(false);
-            new MVCDashboardAdmin();
-        }
     }
 
 }
