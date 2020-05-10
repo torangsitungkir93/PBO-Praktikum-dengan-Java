@@ -1,0 +1,30 @@
+package login;
+
+import menuAdmin.MVCDashboardAdmin;
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author Rifqy W
+ */
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ViewLogin viewLogin = new ViewLogin();
+        ModelLogin modelLogin = new ModelLogin();
+        new ControllerLogin(modelLogin,viewLogin);
+        if(modelLogin.cekLogin()==1){
+            viewLogin.setVisible(false);
+            new MVCDashboardAdmin();
+        }
+    }
+
+}
