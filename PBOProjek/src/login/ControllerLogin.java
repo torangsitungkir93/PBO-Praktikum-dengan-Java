@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import menuKasir.MVCDashboardKasir;
 
 /**
  *
@@ -37,10 +38,14 @@ public class ControllerLogin{
 
                 modelLogin.cekLogin(username, password);
                 
-                 if(modelLogin.cekLogin()==1){
+                if(modelLogin.cekLogin()==1){
                     viewLogin.setVisible(false);
                     
                     MVCDashboardAdmin dashboardAdmin = new MVCDashboardAdmin();
+                }else if(modelLogin.cekLogin()==2){
+                    viewLogin.setVisible(false);
+                    
+                    new MVCDashboardKasir();
                 }
             }
         });

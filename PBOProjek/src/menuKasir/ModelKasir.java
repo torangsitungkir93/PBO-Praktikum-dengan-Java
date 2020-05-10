@@ -1,4 +1,5 @@
-package login;
+package menuKasir;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import menuAdmin.MVCDashboardAdmin;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +17,7 @@ import menuAdmin.MVCDashboardAdmin;
  *
  * @author Torangto Situngkir < torangsitungkir93@gmail.com >
  */
-public class ModelLogin {
+public class ModelKasir {
 
     //mengkoneksikan ke database
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -25,14 +25,11 @@ public class ModelLogin {
     static final String USER = "root";
     static final String PASS = "";
 
-    int login=0;
-    
     Connection koneksi;
     Statement statement;//untuk perintah query
     ResultSet rs;
-    
 
-    public ModelLogin() {
+    public ModelKasir() {
         try {
             Class.forName(JDBC_DRIVER);
             koneksi = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
@@ -50,18 +47,10 @@ public class ModelLogin {
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
                 String sql = "SELECT * FROM user WHERE username='"+username+"' AND password='"+pass+"'";
-                statement = (Statement) koneksi.createStatement();
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
                     if (username.equals(rs.getString("username")) && pass.equals(rs.getString("password"))) {
-                        
-                        if("L".equals(rs.getString("gender"))){
-                            login=1;
-                            JOptionPane.showMessageDialog(null, "Berhasil Login Sebagai Admin");
-                        }else{
-                           login=2;
-                           JOptionPane.showMessageDialog(null, "Berhasil Login Sebagai Kasir");
-                        }
+                        JOptionPane.showMessageDialog(null, "berhasil login");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "username atau password salah");
@@ -72,10 +61,6 @@ public class ModelLogin {
             System.out.println(sql.getMessage());
             JOptionPane.showMessageDialog(null, sql.getMessage());
         }
-    }
-    
-    public int cekLogin(){
-        return login;
     }
 
     public int getBanyakData() {//menghitung jumlah baris
