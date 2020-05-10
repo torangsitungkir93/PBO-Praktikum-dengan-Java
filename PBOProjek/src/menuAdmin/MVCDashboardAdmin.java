@@ -13,12 +13,11 @@ import menuAdmin.*;
 public class MVCDashboardAdmin {
 
         ViewHomeAdmin viewHomeAdmin = new ViewHomeAdmin();
-        ViewDataKasir viewDataKasir = new ViewDataKasir();
         ViewDataAdmin viewDataAdmin = new ViewDataAdmin();
         ViewDataSuplier viewDataSuplier = new ViewDataSuplier();
         ViewDataBuku viewDataBuku = new ViewDataBuku();
         ViewCatatanTransaksi viewCatatanTransaksi= new ViewCatatanTransaksi ();
         
         ModelAdmin modelAdmin = new ModelAdmin();
-        ControllerAdmin controllerAdmin = new ControllerAdmin(modelAdmin, viewHomeAdmin, viewDataKasir,viewDataAdmin,viewDataSuplier,viewDataBuku,viewCatatanTransaksi);
+        ControllerAdmin controllerAdmin = new ControllerAdmin(modelAdmin, viewHomeAdmin,viewDataAdmin,viewDataSuplier,viewDataBuku,viewCatatanTransaksi);
 }

@@ -5,6 +5,8 @@ package menuAdmin;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import dataKasir.MVCDataKasir;
+import dataSupplier.MVCDataSuplier;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -22,17 +24,15 @@ public class ControllerAdmin {
 
     ModelAdmin modelAdmin;
     ViewHomeAdmin viewHomeAdmin;
-    ViewDataKasir viewDataKasir;
     ViewDataAdmin viewDataAdmin;
     ViewDataSuplier viewDataSuplier;
     ViewDataBuku viewDataBuku;
     ViewCatatanTransaksi viewCatatanTransaksi;
 
-    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin,ViewDataKasir vKasir,ViewDataAdmin vAdmin
+    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin,ViewDataAdmin vAdmin
                             ,ViewDataSuplier vSuplier,ViewDataBuku vBuku,ViewCatatanTransaksi vTransaksi) {
         this.modelAdmin = ma;
         this.viewHomeAdmin = vHomeAdmin;
-        this.viewDataKasir = vKasir;
         this.viewDataAdmin = vAdmin;
         this.viewDataSuplier = vSuplier;
         this.viewDataBuku = vBuku;
@@ -50,15 +50,15 @@ public class ControllerAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 viewHomeAdmin.setVisible(false);
-                viewDataKasir.setVisible(true);
+                new MVCDataKasir();
             }
         });
         
         viewHomeAdmin.btnDataPenerbit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                viewHomeAdmin.setVisible(false);
-                viewDataSuplier.setVisible(true);
+               viewHomeAdmin.setVisible(false);
+                new MVCDataSuplier();
             }
         });
         
