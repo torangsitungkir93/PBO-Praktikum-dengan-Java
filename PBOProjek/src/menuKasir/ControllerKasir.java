@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import kasirDataBuku.MVCDataBuku;
 import login.Main;
 
 /**
@@ -38,6 +39,15 @@ public class ControllerKasir {
                 viewHomeKasir.setVisible(false);
                 
                 new MVCKasirDataKasir();
+            }
+        });
+        
+         viewHomeKasir.btnDataBuku.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewHomeKasir.setVisible(false);
+                
+                new MVCDataBuku();
             }
         });
         
