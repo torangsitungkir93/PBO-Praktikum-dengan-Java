@@ -1,6 +1,5 @@
 package dataKasir;
 
-
 import menuAdmin.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,14 +57,15 @@ public class ModelDataKasir {
             return 0;
         }
     }
-    
-    public void insertDataKasir(String nama, String hp, String umur, String email, String note) {
+
+    public void insertDataKasir(String username, String nama, String gender,String password) {
         try {
-            if ("".equals(nama) || "".equals(hp) || "".equals(umur) || "".equals(email)) {
+            if ("".equals(username) || "".equals(nama) || "".equals(gender) || "".equals(password)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
-                String query = "INSERT INTO `kontak`(`nama`, `no_hp`, `umur`,`email`,`note`) VALUES ('" + nama + "','" + hp + "','" + umur + "','" + email + "','" + note + "')";//value 1 (id diskip)
+                String query = "INSERT INTO `user` (`username`,`nama`,`gender`,'password','level') "
+                        + "VALUES ('" + username + "','" + nama + "','" + gender + "','" +password +"',"+2+")";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -78,14 +78,14 @@ public class ModelDataKasir {
         }
     }
 
-    public void updateKontak(String nama, String hp, String umur, String email, String note) {
+    public void updateKasir(String username, String nama, String gender,String hp,String alamat) {
         try {
-            if ("".equals(nama) || "".equals(hp) || "".equals(umur) || "".equals(email)) {
+            if ("".equals(nama) || "".equals(username) || "".equals(gender) || "".equals(hp) || "".equals(alamat)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
-                String query = "UPDATE `kontak` SET nama='" + nama + "',umur='" + umur + "',email='" + email + "',note='" + note
-                        + "' WHERE no_hp='" + hp + "'";
+                String query = "UPDATE `user` SET nama='" + nama + "',gender='" 
+                        + gender + "',no_hp='" + hp + "',alamat='"+alamat+"' WHERE username='" + username + "'";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -98,20 +98,19 @@ public class ModelDataKasir {
         }
     }
 
-    public String[][] readKontak() {
+    public String[][] readKasir() {
         try {
             int jmlData = 0;//menampung jumlah data
 
-            String data[][] = new String[getBanyakData()][5]; //baris, kolom nya ada 3
+            String data[][] = new String[getBanyakData()][7]; //baris, kolom nya ada 3
 
-            String query = "Select * from `kontak`"; //pengambilan dara dalam java dari database
+            String query = "Select * from `user` where level="+2+""; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
-                data[jmlData][0] = resultSet.getString("nama"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][1] = resultSet.getString("no_hp");
-                data[jmlData][2] = resultSet.getString("umur");
-                data[jmlData][3] = resultSet.getString("email");
-                data[jmlData][4] = resultSet.getString("note");
+                data[jmlData][0] = resultSet.getString("username");
+                data[jmlData][1] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][2] = resultSet.getString("no_hp");
+                data[jmlData][3] = resultSet.getString("alamat");
                 jmlData++; //barisnya berpindah terus
             }
             return data;
@@ -122,13 +121,62 @@ public class ModelDataKasir {
             return null;
         }
     }
-    
-    public void deleteKontak(String hp) {
+
+    public String[][] searchKasir(String nama) {
         try {
-            if ("".equals(hp)) {
+            int jmlData = 0;//menampung jumlah data
+
+            String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
+
+            String query = "Select * from `user` where level="+2+" AND nama LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
+                data[jmlData][0] = resultSet.getString("username");
+                data[jmlData][1] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][2] = resultSet.getString("no_hp");
+                data[jmlData][3] = resultSet.getString("alamat");
+                jmlData++; //barisnya berpindah terus
+            }
+            return data;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+        }
+    }
+
+    public String[][] readSatuKasir(String id) {
+        try {
+            int jmlData = 0;//menampung jumlah data
+
+            String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
+            int num = Integer.parseInt(id);
+
+            String query = "Select * from `user` where level="+2+" AND id='" + id + "'"; //pengambilan dara dalam java dari database
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
+                data[jmlData][0] = resultSet.getString("username");
+                data[jmlData][1] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][2] = resultSet.getString("no_hp");
+                data[jmlData][3] = resultSet.getString("alamat");
+                jmlData++; //barisnya berpindah terus
+            }
+            return data;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+        }
+    }
+
+    public void deleteKasir(int id) {
+        try {
+            if ("".equals(id)) {
                 JOptionPane.showMessageDialog(null, "Gagal Dihapus\nPastikan Isi No Hp yang ingin dihapus benar !");
             } else {
-                String query = "DELETE FROM `kontak` WHERE `no_hp` ='" + hp + "'";
+                String query = "DELETE FROM `user`  where level="+2+" AND `id` ='" + id + "'";
                 statement = koneksi.createStatement();
                 statement.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");

@@ -24,7 +24,7 @@ public class ViewDataKasir extends JFrame {
     JTable tabel;
     DefaultTableModel tabelModel;
     JScrollPane scrollPane;
-    Object kolom[] = {"ID Kasir", "Username", "Password", "Nama Admin", "Jenis Kelamin", "No Telp", "Alamat"};
+    Object kolom[] = {"Username", "Password", "Nama Admin", "Jenis Kelamin", "No Telp", "Alamat"};
     
     GroupLayout gpPanelTop, gpPanelBack, gpPanelTabel, gpPanelLine, gpPanelForm;
     
@@ -40,7 +40,6 @@ public class ViewDataKasir extends JFrame {
         tabel = new JTable(tabelModel);
         scrollPane = new JScrollPane(tabel);
         
-        lId = new JLabel("Id Admin");
         lUsername = new JLabel("Username");
         lPass = new JLabel("Password");
         lNama = new JLabel("Nama Kasir");
@@ -136,7 +135,6 @@ public class ViewDataKasir extends JFrame {
         pPanelForm.add(r1);
         pPanelForm.add(r2);
         
-        lId.setBounds(10, 10, 100, 20);
         lUsername.setBounds(10, 50, 100, 20);
         lPass.setBounds(10, 90, 100, 20);
         lNama.setBounds(10, 130, 100, 20);

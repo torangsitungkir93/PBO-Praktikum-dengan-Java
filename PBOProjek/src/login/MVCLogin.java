@@ -12,13 +12,14 @@ import menuAdmin.MVCDashboardAdmin;
  *
  * @author Rifqy W
  */
-public class Main {
+public class MVCLogin {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         ViewLogin viewLogin = new ViewLogin();
+        viewLogin.setVisible(true);
         ModelLogin modelLogin = new ModelLogin();
         new ControllerLogin(modelLogin,viewLogin);
     }

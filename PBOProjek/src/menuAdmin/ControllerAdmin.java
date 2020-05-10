@@ -15,7 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import login.Main;
+import login.MVCLogin;
 
 /**
  *
@@ -28,19 +28,11 @@ public class ControllerAdmin {
     ModelAdmin modelAdmin;
     ViewHomeAdmin viewHomeAdmin;
     ViewDataAdmin viewDataAdmin;
-    ViewDataSuplier viewDataSuplier;
-    ViewDataBuku viewDataBuku;
-    ViewCatatanTransaksi viewCatatanTransaksi;
 
-    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin, ViewDataAdmin vAdmin,
-            ViewDataSuplier vSuplier, ViewDataBuku vBuku, ViewCatatanTransaksi vTransaksi) {
+    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin, ViewDataAdmin vAdmin) {
         this.modelAdmin = ma;
         this.viewHomeAdmin = vHomeAdmin;
         this.viewDataAdmin = vAdmin;
-        this.viewDataSuplier = vSuplier;
-        this.viewDataBuku = vBuku;
-        this.viewCatatanTransaksi = vTransaksi;
-
         viewHomeAdmin.btnDataAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +78,7 @@ public class ControllerAdmin {
             public void actionPerformed(ActionEvent e) {
                 viewHomeAdmin.setVisible(false);
 
-                new Main();
+                MVCLogin login = new MVCLogin();
             }
         });
     }

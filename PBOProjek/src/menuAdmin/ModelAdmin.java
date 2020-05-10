@@ -67,7 +67,7 @@ public class ModelAdmin {
         int jmlData = 0;
         try {
             statement = koneksi.createStatement();
-            String query = "Select * from `user`"; //pengambilan dara dalam java dari database
+            String query = "Select * from `user` where level='"+1+"'"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 jmlData++;
@@ -80,4 +80,7 @@ public class ModelAdmin {
             return 0;
         }
     }
+    
+       
+    
 }
