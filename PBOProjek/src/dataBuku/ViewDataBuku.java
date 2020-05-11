@@ -12,8 +12,8 @@ public class ViewDataBuku extends JFrame {
     JPanel pPanelTabel = new JPanel();
     JPanel pPanelForm = new JPanel();
     
-    JLabel lJudul, lId, lJudulB, lKategori, lPenerbit, lISBN, lSuplier, lTahun, lBahasa, lSinopsis;
-    JTextField tfSearch, tfId, tfJudulB, tfKategori, tfPenerbit, tfISBN, tfSuplier, tfTahun, tfBahasa, tfSinopsis;
+    JLabel lJudul, lId, lJudulB, lKategori, lPenerbit, lISBN, lSuplier, lTahun, lHarga, lStok;
+    JTextField tfSearch, tfId, tfJudulB, tfKategori, tfPenerbit, tfISBN, tfSuplier, tfTahun, tfHarga, tfStok;
     JButton btnReturn, btnSearch, btnAdd, btnEdit, btnDel, btnCancel;
     
     JRadioButton r1 = new JRadioButton("Laki-Laki");  
@@ -24,7 +24,7 @@ public class ViewDataBuku extends JFrame {
     JTable tabel;
     DefaultTableModel tabelModel;
     JScrollPane scrollPane;
-    Object kolom[] = {"ID Buku", "Judul", "Kategori", "Penerbit", "ISBN", "Suplier", "Tahun", "Bahasa", "Sinopsis"};
+    Object kolom[] = {"Judul", "Kategori", "Penerbit", "ISBN", "Suplier", "Tahun", "Harga", "Stok"};
     
     GroupLayout gpPanelTop, gpPanelBack, gpPanelTabel, gpPanelLine, gpPanelForm;
     
@@ -32,7 +32,7 @@ public class ViewDataBuku extends JFrame {
         setTitle("Data Buku");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setVisible(false);
+        setVisible(true);
         setSize(800,500);
         setLocationRelativeTo(null);
         
@@ -40,30 +40,30 @@ public class ViewDataBuku extends JFrame {
         tabel = new JTable(tabelModel);
         scrollPane = new JScrollPane(tabel);
         
-        lId = new JLabel("Id Buku");
+//        lId = new JLabel("Id Buku");
         lJudulB = new JLabel("Judul");
         lKategori = new JLabel("Kategori");
         lPenerbit = new JLabel("Penerbit");
         lISBN = new JLabel("ISBN");
         lSuplier = new JLabel("Suplier");
         lTahun = new JLabel("Tahun Terbit");
-        lBahasa = new JLabel("Bahasa");
-        lSinopsis = new JLabel("Sinopsis");
+        lHarga = new JLabel("Harga");
+        lStok = new JLabel("Stok");
         
         lJudul = new JLabel("DATA BUKU");
         lJudul.setFont(new Font("COURIER NEW", Font.BOLD, 35));
         lJudul.setForeground(Color.WHITE);
         
         tfSearch = new JTextField();
-        tfId = new JTextField();
+//        tfId = new JTextField();
         tfJudulB = new JTextField();
         tfKategori = new JTextField();
         tfPenerbit = new JTextField();
         tfISBN = new JTextField();
         tfSuplier = new JTextField();
         tfTahun = new JTextField();
-        tfBahasa = new JTextField();
-        tfSinopsis = new JTextField();
+        tfHarga = new JTextField();
+        tfStok = new JTextField();
         
         ImageIcon returnIcon = new ImageIcon(getClass().getResource("/images/iconReturn.png"));
         ImageIcon searchIcon = new ImageIcon(getClass().getResource("/images/iconSearch.png"));
@@ -123,34 +123,34 @@ public class ViewDataBuku extends JFrame {
         pPanelBack.add(btnEdit);
         pPanelBack.add(btnDel);
         pPanelBack.add(btnCancel);
-        pPanelForm.add(lId);
+//        pPanelForm.add(lId);
         pPanelForm.add(lJudulB);
         pPanelForm.add(lKategori);
         pPanelForm.add(lPenerbit);
         pPanelForm.add(lISBN);
         pPanelForm.add(lSuplier);
         pPanelForm.add(lTahun);
-        pPanelForm.add(lBahasa);
-        pPanelForm.add(lSinopsis);
-        pPanelForm.add(tfId);
+        pPanelForm.add(lHarga);
+        pPanelForm.add(lStok);
+//        pPanelForm.add(tfId);
         pPanelForm.add(tfJudulB);
         pPanelForm.add(tfKategori);
         pPanelForm.add(tfPenerbit);
         pPanelForm.add(tfISBN);
         pPanelForm.add(tfSuplier);
         pPanelForm.add(tfTahun);
-        pPanelForm.add(tfBahasa);
-        pPanelForm.add(tfSinopsis);
+        pPanelForm.add(tfHarga);
+        pPanelForm.add(tfStok);
         
-        lId.setBounds(10, 10, 100, 20);
+//        lId.setBounds(10, 10, 100, 20);
         lJudulB.setBounds(10, 40, 100, 20);
         lKategori.setBounds(10, 70, 100, 20);
         lPenerbit.setBounds(10, 100, 100, 20);
         lISBN.setBounds(10, 130, 100, 20);
         lSuplier.setBounds(10, 160, 100, 20);
         lTahun.setBounds(10, 190, 100, 20);
-        lBahasa.setBounds(10, 220, 100, 20);
-        lSinopsis.setBounds(10, 250, 100, 20);
+        lHarga.setBounds(10, 220, 100, 20);
+        lStok.setBounds(10, 250, 100, 20);
 //        tfId.setBounds(100, 10, 100, 20);
         tfJudulB.setBounds(100, 40, 100, 20);
         tfKategori.setBounds(100, 70, 100, 20);
@@ -158,8 +158,8 @@ public class ViewDataBuku extends JFrame {
         tfISBN.setBounds(100, 130, 100, 20);
         tfSuplier.setBounds(100, 160, 100, 20);
         tfTahun.setBounds(100, 190, 100, 20);
-        tfBahasa.setBounds(100, 220, 100, 20);
-        tfSinopsis.setBounds(100, 250, 100, 20);
+        tfHarga.setBounds(100, 220, 100, 20);
+        tfStok.setBounds(100, 250, 100, 20);
         
         lJudul.setBounds(320, 20, 370, 40);
         btnReturn.setBounds(20, 20, 120, 40);
@@ -174,4 +174,35 @@ public class ViewDataBuku extends JFrame {
 
     }
     
+    public String getSearch () {
+        return tfSearch.getText();
+    }
+    public String getJudulB () {
+        return tfJudulB.getText();
+    }
+    public String getKategori () {
+        return tfKategori.getText();
+    }
+    public String getPenerbit () {
+        return tfPenerbit.getText();
+    }
+    public String getISBN () {
+        return tfISBN.getText();
+    }
+    public String getSuplier () {
+        return tfSuplier.getText();
+    }
+    public String getTahun () {
+        return tfTahun.getText();
+    }
+    public String getHarga () {
+        return tfHarga.getText();
+    }
+    public String getStok () {
+        return tfStok.getText();
+    }
+    
+    public static void main(String[] args) {
+        new ViewDataBuku();
+    }
 }

@@ -87,6 +87,10 @@ public class ViewDataCatatanTransaksi extends JFrame {
 
     }
     
+    public String getSearch () {
+        return tfSearch.getText();
+    }
+    
     public static void main(String[] args) {
         new ViewDataCatatanTransaksi();
     }

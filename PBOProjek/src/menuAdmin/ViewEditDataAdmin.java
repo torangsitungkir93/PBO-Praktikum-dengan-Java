@@ -4,15 +4,15 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
 
-public class ViewDataAdmin extends JFrame {
+public class ViewEditDataAdmin extends JFrame {
     JPanel pPanelTop = new JPanel();
     JPanel pPanelLine = new JPanel();
     JPanel pPanelBack = new JPanel();
     JPanel pPanelForm = new JPanel();
     
     JLabel lJudul, lId, lUsername, lPass, lNama, lJk, lNoTelp, lAlamat;
-    JTextField tfSearch, tfUsername, tfNama, tfNoTelp, tfAlamat;
-    JButton btnReturn, btnEdit, btnCancel;
+    JTextField tfSearch, tfUsername, tfPass, tfNama, tfNoTelp, tfAlamat;
+    JButton btnReturn, btnSave, btnCancel;
     
     JRadioButton r1 = new JRadioButton("Laki-Laki");  
     JRadioButton r2 = new JRadioButton("Perempuan");
@@ -21,34 +21,37 @@ public class ViewDataAdmin extends JFrame {
     
     GroupLayout gpPanelTop, gpPanelBack, gpPanelLine, gpPanelForm;
     
-    public ViewDataAdmin() {
-        setTitle("Data Admin");
+    public ViewEditDataAdmin() {
+        setTitle("Edit Data Admin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setVisible(false);
         setSize(400,500);
         setLocationRelativeTo(null);
         
+        lId = new JLabel("Id Admin");
         lUsername = new JLabel("Username");
+        lPass = new JLabel("Password");
         lNama = new JLabel("Nama Admin");
         lJk = new JLabel("Jenis Kelamin");
         lNoTelp = new JLabel("No Telpon");
         lAlamat = new JLabel("Alamat");
         
-        lJudul = new JLabel("DATA ADMIN");
+        lJudul = new JLabel("EDIT DATA ADMIN");
         lJudul.setFont(new Font("COURIER NEW", Font.BOLD, 35));
         lJudul.setForeground(Color.WHITE);
         
         tfUsername = new JTextField();
+        tfPass = new JTextField();
         tfNama = new JTextField();
         tfNoTelp = new JTextField();
         tfAlamat = new JTextField();
         
         ImageIcon returnIcon = new ImageIcon(getClass().getResource("/images/iconReturn.png"));
-        ImageIcon editIcon = new ImageIcon(getClass().getResource("/images/iconEdit.png"));
+        ImageIcon saveIcon = new ImageIcon(getClass().getResource("/images/iconSave.png"));
         ImageIcon cancelIcon = new ImageIcon(getClass().getResource("/images/iconCancel.png"));
         
-        btnEdit = new JButton("Edit", editIcon);
+        btnSave = new JButton("Simpan", saveIcon);
         btnCancel = new JButton("Batal", cancelIcon);
         btnReturn = new JButton("Kembali", returnIcon);
         
@@ -81,46 +84,55 @@ public class ViewDataAdmin extends JFrame {
         
         pPanelTop.add(lJudul);
         pPanelTop.add(btnReturn);
-        pPanelBack.add(btnEdit);
+        pPanelBack.add(btnSave);
         pPanelBack.add(btnCancel);
-
+        pPanelForm.add(lId);
         pPanelForm.add(lUsername);
+        pPanelForm.add(lPass);
         pPanelForm.add(lNama);
         pPanelForm.add(lJk);
         pPanelForm.add(lNoTelp);
         pPanelForm.add(lAlamat);
         
         pPanelForm.add(tfUsername);
+        pPanelForm.add(tfPass);
         pPanelForm.add(tfNama);
         pPanelForm.add(tfNoTelp);
         pPanelForm.add(tfAlamat);
         pPanelForm.add(r1);
         pPanelForm.add(r2);
         
+        lId.setBounds(10, 10, 100, 20);
         lUsername.setBounds(10, 50, 100, 20);
-        lNama.setBounds(10, 90, 100, 20);
-        lJk.setBounds(10, 130, 100, 20);
-        lNoTelp.setBounds(10, 170, 100, 20);
-        lAlamat.setBounds(10, 210, 100, 20);
+        lPass.setBounds(10, 90, 100, 20);
+        lNama.setBounds(10, 130, 100, 20);
+        lJk.setBounds(10, 170, 100, 20);
+        lNoTelp.setBounds(10, 210, 100, 20);
+        lAlamat.setBounds(10, 250, 100, 20);
         
         tfUsername.setBounds(120, 50, 200, 20);
-        tfNama.setBounds(120, 90, 200, 20);
-        r1.setBounds(120, 130, 100, 20);
+        tfPass.setBounds(120, 90, 200, 20);
+        tfNama.setBounds(120, 130, 200, 20);
+        r1.setBounds(120, 170, 100, 20);
         r1.setBackground(Color.WHITE);
-        r2.setBounds(220, 130, 100, 20);
+        r2.setBounds(220, 170, 100, 20);
         r2.setBackground(Color.WHITE);
-        tfNoTelp.setBounds(120, 170, 200, 20);
-        tfAlamat.setBounds(120, 210, 200, 20);
+        tfNoTelp.setBounds(120, 210, 200, 20);
+        tfAlamat.setBounds(120, 250, 200, 20);
         
-        lJudul.setBounds(80, 40, 370, 40);
+        lJudul.setBounds(35, 40, 370, 40);
         btnReturn.setBounds(130, 10, 120, 30);
         
-        btnEdit.setBounds(100, 325, 170, 30);
+        btnSave.setBounds(40, 325, 140, 30);
+        btnCancel.setBounds(200, 325, 140, 30);
 
     }
     
     public String getUsername () {
         return tfUsername.getText();
+    }
+    public String getPassword () {
+        return tfPass.getText();
     }
     public String getNama () {
         return tfNama.getText();
@@ -144,6 +156,6 @@ public class ViewDataAdmin extends JFrame {
     }
     
     public static void main(String[] args) {
-        new ViewDataAdmin();
+        new ViewEditDataAdmin();
     }
 }

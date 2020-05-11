@@ -24,7 +24,8 @@ public class ViewDataKasir extends JFrame {
     JTable tabel;
     DefaultTableModel tabelModel;
     JScrollPane scrollPane;
-    Object kolom[] = {"Username", "Password", "Nama Admin", "Jenis Kelamin", "No Telp", "Alamat"};
+    Object kolom[] = {"Username", "Nama User", "Jenis Kelamin", "No Telp", "Alamat"};
+//    Object kolom[] = {"ID User", "Username", "Password", "Nama User", "Jenis Kelamin", "No Telp", "Alamat"};
     
     GroupLayout gpPanelTop, gpPanelBack, gpPanelTabel, gpPanelLine, gpPanelForm;
     
@@ -32,7 +33,7 @@ public class ViewDataKasir extends JFrame {
         setTitle("Data Kasir");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setVisible(false);
+        setVisible(true);
         setSize(800,500);
         setLocationRelativeTo(null);
         
@@ -40,9 +41,10 @@ public class ViewDataKasir extends JFrame {
         tabel = new JTable(tabelModel);
         scrollPane = new JScrollPane(tabel);
         
+        lId = new JLabel("Id User");
         lUsername = new JLabel("Username");
         lPass = new JLabel("Password");
-        lNama = new JLabel("Nama Kasir");
+        lNama = new JLabel("Nama User");
         lJk = new JLabel("Jenis Kelamin");
         lNoTelp = new JLabel("No Telpon");
         lAlamat = new JLabel("Alamat");
@@ -102,7 +104,7 @@ public class ViewDataKasir extends JFrame {
         pPanelLine.setBounds(0, 80, 800, 5);
         pPanelLine.setBackground(Color.DARK_GRAY);
         pPanelBack.setBounds(0, 85, 800, 400);
-        pPanelBack.setBackground(Color.RED);
+        pPanelBack.setBackground(Color.BLUE);
         
         pPanelTabel.setBounds(10, 10, 530, 310);
         pPanelTabel.setBackground(Color.WHITE);
@@ -135,23 +137,25 @@ public class ViewDataKasir extends JFrame {
         pPanelForm.add(r1);
         pPanelForm.add(r2);
         
+//        lId.setBounds(10, 10, 100, 20);
         lUsername.setBounds(10, 50, 100, 20);
-        lPass.setBounds(10, 90, 100, 20);
-        lNama.setBounds(10, 130, 100, 20);
-        lJk.setBounds(10, 170, 100, 20);
-        lNoTelp.setBounds(10, 210, 100, 20);
-        lAlamat.setBounds(10, 250, 100, 20);
+//        lPass.setBounds(10, 90, 100, 20);
+        lNama.setBounds(10, 90, 100, 20);
+        lJk.setBounds(10, 130, 100, 20);
+        lNoTelp.setBounds(10, 170, 100, 20);
+        lAlamat.setBounds(10, 210, 100, 20);
+        
 //        tfId.setBounds(100, 10, 100, 20);
         tfUsername.setBounds(100, 50, 100, 20);
-        tfPass.setBounds(100, 90, 100, 20);
-        tfNama.setBounds(100, 130, 100, 20);
+//        tfPass.setBounds(100, 90, 100, 20);
+        tfNama.setBounds(100, 90, 100, 20);
 //        tfJk.setBounds(100, 170, 100, 20);
-        r1.setBounds(100, 160, 100, 20);
+        r1.setBounds(100, 120, 100, 20);
         r1.setBackground(Color.WHITE);
-        r2.setBounds(100, 180, 100, 20);
+        r2.setBounds(100, 140, 100, 20);
         r2.setBackground(Color.WHITE);
-        tfNoTelp.setBounds(100, 210, 100, 20);
-        tfAlamat.setBounds(100, 250, 100, 20);
+        tfNoTelp.setBounds(100, 170, 100, 20);
+        tfAlamat.setBounds(100, 210, 100, 60);
         
         lJudul.setBounds(280, 20, 370, 40);
         btnReturn.setBounds(20, 20, 120, 40);
@@ -166,8 +170,37 @@ public class ViewDataKasir extends JFrame {
 
     }
     
+    public String getSearch () {
+        return tfSearch.getText();
+    }
+    public String getUsername () {
+        return tfUsername.getText();
+    }
+//    public String getPassword () {
+//        return tfPass.getText();
+//    }
+    public String getNama () {
+        return tfNama.getText();
+    }
+    public String getJK () {
+        if (r1.isSelected()) {
+            return "L";
+        }
+        else if (r2.isSelected()) {
+            return "P";
+        }
+        else {
+            return "";
+        }
+    }
+    public String getNoTelp () {
+        return tfNoTelp.getText();
+    }
+    public String getAlamat () {
+        return tfAlamat.getText();
+    }
+    
     public static void main(String[] args) {
         new ViewDataKasir();
     }
-    
 }

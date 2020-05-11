@@ -39,14 +39,14 @@ public class ControllerDataKasir {
 //            JOptionPane.showMessageDialog(null, "Data Tidak Ada");
 //        }
 //
-//        // Tombol di Menu Home;
-//        viewDataKasir.btnReturn.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                viewDataKasir.setVisible(false);
-//                new MVCDashboardAdmin();
-//            }
-//        });
+        // Tombol di Menu Home;
+        viewDataKasir.btnReturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewDataKasir.setVisible(false);
+                new MVCDashboardAdmin();
+            }
+        });
 //
 //        viewDataSuplier.btnEdit.addActionListener(new ActionListener() {
 //            @Override

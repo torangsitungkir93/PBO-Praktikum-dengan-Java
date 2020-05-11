@@ -14,7 +14,8 @@ public class MVCDashboardAdmin {
 
         ViewHomeAdmin viewHomeAdmin = new ViewHomeAdmin();
         ViewDataAdmin viewDataAdmin = new ViewDataAdmin();
+        ViewEditDataAdmin viewEditDataAdmin = new ViewEditDataAdmin();
         
         ModelAdmin modelAdmin = new ModelAdmin();
-        ControllerAdmin controllerAdmin = new ControllerAdmin(modelAdmin, viewHomeAdmin,viewDataAdmin);
+        ControllerAdmin controllerAdmin = new ControllerAdmin(modelAdmin, viewHomeAdmin,viewDataAdmin,viewEditDataAdmin);
 }

@@ -28,11 +28,15 @@ public class ControllerAdmin {
     ModelAdmin modelAdmin;
     ViewHomeAdmin viewHomeAdmin;
     ViewDataAdmin viewDataAdmin;
+    ViewEditDataAdmin viewEditDataAdmin;
 
-    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin, ViewDataAdmin vAdmin) {
+    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin, ViewDataAdmin vAdmin,ViewEditDataAdmin vEAdmin) {
         this.modelAdmin = ma;
         this.viewHomeAdmin = vHomeAdmin;
         this.viewDataAdmin = vAdmin;
+         this.viewEditDataAdmin = vEAdmin;
+        
+        
         viewHomeAdmin.btnDataAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,6 +83,31 @@ public class ControllerAdmin {
                 viewHomeAdmin.setVisible(false);
 
                 MVCLogin login = new MVCLogin();
+            }
+        });
+        
+         // Untuk Data Admin
+        viewDataAdmin.btnReturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewHomeAdmin.setVisible(true);
+                viewDataAdmin.setVisible(false);
+            }
+        });
+
+        viewEditDataAdmin.btnReturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewDataAdmin.setVisible(true);
+                viewEditDataAdmin.setVisible(false);
+            }
+        });
+
+        viewDataAdmin.btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewDataAdmin.setVisible(false);
+                viewEditDataAdmin.setVisible(true);
             }
         });
     }
