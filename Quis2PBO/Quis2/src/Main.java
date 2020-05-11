@@ -110,26 +110,46 @@ public class Main {
                                 nim = in.nextLine();
                                 System.out.print("Input Nama  : ");
                                 nama = in.nextLine();
-                                System.out.print("Input Nilai Tes Tulis     : ");
-                                nilaiTulis = in.nextInt();
-                                System.out.print("Input Nilai Coding        : ");
-                                nilaiKoding = in.nextInt();
-                                System.out.print("Input Nilai Wawancara     : ");
-                                nilaiWawancara = in.nextInt();
-                                System.out.print("Input Nilai MicroTeaching : ");
-                                nilaiJaringan = in.nextInt();
-                                AdminLaboratorium admin = new AdminLaboratorium(nim, nama, nilaiTulis, nilaiKoding, nilaiWawancara, nilaiJaringan);
-                                System.out.println("Nilai Akhir : " + admin.getNilaiAkhir());
-                                admin.getKeputusan();
-                                System.out.println("\n");
+                                try {
+                                    System.out.print("Input Nilai Tes Tulis     : ");
+                                    nilaiTulis = in.nextInt();
+                                    if (cekAngka.isNilaiTrue(nilaiTulis) == false) {
+                                        throw new RuntimeException("Inputan 0-100");
+                                    }
+                                    System.out.print("Input Nilai Coding        : ");
+                                    nilaiKoding = in.nextInt();
+                                    if (cekAngka.isNilaiTrue(nilaiKoding) == false) {
+                                        throw new RuntimeException("Inputan 0-100");
+                                    }
+                                    System.out.print("Input Nilai Wawancara     : ");
+                                    nilaiWawancara = in.nextInt();
+                                    if (cekAngka.isNilaiTrue(nilaiWawancara) == false) {
+                                        throw new RuntimeException("Inputan 0-100");
+                                    }
+                                    System.out.print("Input Nilai Jaringan : ");
+                                    nilaiJaringan = in.nextInt();
+                                    if (cekAngka.isNilaiTrue(nilaiJaringan) == false) {
+                                        throw new RuntimeException("Inputan 0-100");
+                                    }
+                                    AdminLaboratorium admin = new AdminLaboratorium(nim, nama, nilaiTulis, nilaiKoding, nilaiWawancara, nilaiJaringan);
+                                    System.out.println("Nilai Akhir : " + admin.getNilaiAkhir());
+                                    admin.getKeputusan();
+                                    System.out.println("\n");
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                } finally {
+                                    System.out.println("Inputan Harus Bilangan Bulat");
+                                }
                             }
+                            System.out.print("Apakah anda ingin kembali kemenu utama ? Y/N : ");
+                            kembali2 = in.nextLine();
+                            kembali2 = in.nextLine();
                         } catch (Exception e) {
                             System.out.println(e);
                         }
                     } while (kembali2.equals("n"));
                     break;
                 }
-
                 default: {
                     System.out.println("Input yang anda masukkkan salah ");
                     break;
