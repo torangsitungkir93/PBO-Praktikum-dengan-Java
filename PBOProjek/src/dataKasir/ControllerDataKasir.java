@@ -30,15 +30,15 @@ public class ControllerDataKasir {
         this.viewDataKasir = vKasir;
         vKasir.setVisible(true);
 
-//        if (ma.getBanyakData() != 0) {
-//            String dataNamaSuplier[][] = ma.readSuplier();
-//            vSuplier.tabel.setModel((new JTable(dataNamaSuplier, vSuplier.kolom)).getModel());
-//            listenerViewData();
-//            listenerHome();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Data Tidak Ada");
-//        }
-//
+        if (ma.getBanyakData() != 0) {
+            String dataNamaSuplier[][] = ma.readKasir();
+            vKasir.tabel.setModel((new JTable(dataNamaSuplier, vKasir.kolom)).getModel());
+            listenerViewData();
+            listenerHome();
+        } else {
+            JOptionPane.showMessageDialog(null, "Data Tidak Ada");
+        }
+
         // Tombol di Menu Home;
         viewDataKasir.btnReturn.addActionListener(new ActionListener() {
             @Override
@@ -48,111 +48,121 @@ public class ControllerDataKasir {
             }
         });
 //
-//        viewDataSuplier.btnEdit.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int id = viewDataSuplier.getIdInt();
-//                String nama = viewDataSuplier.getNama();
-//                String no_hp = viewDataSuplier.getNOHP();
-//                String alamat = viewDataSuplier.getAlamat();
+        viewDataKasir.btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = viewDataKasir.getUsername();
+                String nama = viewDataKasir.getNama();
+                String no_hp = viewDataKasir.getNoTelp();
+                String alamat = viewDataKasir.getAlamat();
+                String gender = viewDataKasir.getJK();
+
+                modelDataKasir.updateKasir(id, nama,gender, no_hp, alamat);
+                resetFormKasir();
+                listenerViewData();
+                listenerHome();
+            }
+        });
+
+        viewDataKasir.btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = viewDataKasir.getUsername();
+                String nama = viewDataKasir.getNama();
+                String no_hp = viewDataKasir.getNoTelp();
+                String alamat = viewDataKasir.getAlamat();
+                String gender = viewDataKasir.getJK();
+
+                modelDataKasir.insertDataKasir(id, nama,gender, no_hp, alamat);
+                resetFormKasir();
+                listenerViewData();
+                listenerHome();
+            }
+        });
+
+        viewDataKasir.btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                resetFormKasir();
+                listenerHome();
+                listenerViewData();
+            }
+        });
+
+        viewDataKasir.btnDel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = viewDataKasir.getUsername();
+
+                modelDataKasir.deleteKasir(id);
+                listenerViewData();
+                listenerHome();
+            }
+        });
+
+        viewDataKasir.btnSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String cari = viewDataKasir.getSearch();
+
+                listenerViewData();
+                String dataNamaSuplier[][] = modelDataKasir.searchKasir(cari);
+                vKasir.tabel.setModel((new JTable(dataNamaSuplier, vKasir.kolom)).getModel());
+            }
+        });
 //
-//                modelDataSuplier.updateSuplier(id, nama, no_hp, alamat);
-//                resetFormSuplier();
-//                listenerViewData();
-//                listenerHome();
-//            }
-//        });
+    }
 //
-//        viewDataSuplier.btnAdd.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String nama = viewDataSuplier.getNama();
-//                String no_hp = viewDataSuplier.getNOHP();
-//                String alamat = viewDataSuplier.getAlamat();
-//
-//                modelDataSuplier.insertDataSuplier(nama, no_hp, alamat);
-//                resetFormSuplier();
-//                listenerViewData();
-//                listenerHome();
-//            }
-//        });
-//
-//        viewDataSuplier.btnCancel.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//                resetFormSuplier();
-//                listenerHome();
-//                listenerViewData();
-//            }
-//        });
-//
-//        viewDataSuplier.btnDel.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int id = viewDataSuplier.getIdInt();
-//
-//                modelDataSuplier.deleteSuplier(id);
-//                listenerViewData();
-//                listenerHome();
-//            }
-//        });
-//
-//        viewDataSuplier.btnSearch.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String cari = viewDataSuplier.getSearch();
-//
-//                listenerViewData();
-//                String dataNamaSuplier[][] = modelDataSuplier.searchSuplier(cari);
-//                vSuplier.tabel.setModel((new JTable(dataNamaSuplier, vSuplier.kolom)).getModel());
-//
-//            }
-//        });
-//
-//    }
-//
-//    public void resetFormSuplier() {
-//        viewDataSuplier.tfId.setText("");
-//        viewDataSuplier.tfNama.setText("");
-//        viewDataSuplier.tfNoTelp.setText("");
-//        viewDataSuplier.tfAlamat.setText("");
-//        viewDataSuplier.tfSearch.setText("");
-//    }
-//
-//    public void listenerHome() {
-//        String data[][] = modelDataSuplier.readSuplier();
-//        viewDataSuplier.tabel.setModel(new JTable(data, viewDataSuplier.kolom).getModel());
-//    }
-//
-//    public void listenerViewData() {
-//        String data[][] = modelDataSuplier.readSuplier();
-//        viewDataSuplier.tfId.setEditable(false);
-//        viewDataSuplier.tfId.setForeground(Color.red);
-//        viewDataSuplier.btnCancel.setEnabled(false);
-//        viewDataSuplier.btnDel.setEnabled(false);
-//        viewDataSuplier.btnEdit.setEnabled(false);
-//
-//        viewDataSuplier.tabel.addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                super.mousePressed(e);
-//                int row = viewDataSuplier.tabel.getSelectedRow();
-//                int col = viewDataSuplier.tabel.getSelectedColumn();
-//
-//                nomor = data[row][1];
-//
-////                String data[][] = modelDataSuplier.readSatuSuplier(nomor);
-//                viewDataSuplier.tfId.setText(data[row][0].toString());
-//                viewDataSuplier.tfNama.setText(data[row][1].toString());
-//                viewDataSuplier.tfNoTelp.setText(data[row][2].toString());
-//                viewDataSuplier.tfAlamat.setText(data[row][3].toString());
-//
-//                viewDataSuplier.btnEdit.setEnabled(true);
-//                viewDataSuplier.btnDel.setEnabled(true);
-//                viewDataSuplier.btnCancel.setEnabled(true);
-//
-//            }
-//        });
+    public void resetFormKasir() {
+        viewDataKasir.tfUsername.setText("");
+        viewDataKasir.tfUsername.setEditable(true);
+        viewDataKasir.tfNama.setText("");
+        viewDataKasir.tfNoTelp.setText("");
+        viewDataKasir.tfAlamat.setText("");
+        viewDataKasir.tfSearch.setText("");
+    }
+
+    public void listenerHome() {
+        String data[][] = modelDataKasir.readKasir();
+        viewDataKasir.tabel.setModel(new JTable(data, viewDataKasir.kolom).getModel());
+    }
+
+    public void listenerViewData() {
+        String data[][] = modelDataKasir.readKasir();
+        viewDataKasir.btnCancel.setEnabled(false);
+        viewDataKasir.btnDel.setEnabled(false);
+        viewDataKasir.btnEdit.setEnabled(false);
+
+        viewDataKasir.tabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                super.mousePressed(e);
+                int row = viewDataKasir.tabel.getSelectedRow();
+                int col = viewDataKasir.tabel.getSelectedColumn();
+
+                nomor = data[row][1];
+
+//                String data[][] = modelDataSuplier.readSatuSuplier(nomor);
+                viewDataKasir.tfUsername.setText(data[row][0].toString());
+                viewDataKasir.tfUsername.setForeground(Color.red);
+                viewDataKasir.tfUsername.setEditable(false);
+                viewDataKasir.tfNama.setText(data[row][1].toString());
+                
+                if(data[row][2].equals("L")){
+                    viewDataKasir.r1.setSelected(true);
+                }else if(data[row][2].equals("P")){
+                    viewDataKasir.r2.setSelected(true);
+                }
+                
+                viewDataKasir.tfNoTelp.setText(data[row][3].toString());
+                viewDataKasir.tfAlamat.setText(data[row][4].toString());
+
+                viewDataKasir.btnEdit.setEnabled(true);
+                viewDataKasir.btnDel.setEnabled(true);
+                viewDataKasir.btnCancel.setEnabled(true);
+
+            }
+        });
 
     }
 }

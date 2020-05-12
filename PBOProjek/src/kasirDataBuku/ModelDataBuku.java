@@ -86,19 +86,24 @@ public class ModelDataBuku {
         }
     }
 
-    public String[][] searchSuplier(String nama) {
+    public String[][] searchBuku(String nama) {
         try {
             int jmlData = 0;//menampung jumlah data
 
-            String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
+            String data[][] = new String[getBanyakData()][9]; //baris, kolom nya ada 3
 
-            String query = "Select * from `suplier` where nama LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
+            String query = "Select * from `buku` INNER JOIN `suplier` ON buku.id=suplier.id where judul LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("id");
-                data[jmlData][1] = resultSet.getString("nama"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][2] = resultSet.getString("no_hp");
-                data[jmlData][3] = resultSet.getString("alamat");
+                data[jmlData][1] = resultSet.getString("judul"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][2] = resultSet.getString("kategori");
+                data[jmlData][3] = resultSet.getString("penerbit");
+                data[jmlData][4] = resultSet.getString("ISBN");
+                data[jmlData][5] = resultSet.getString("nama");
+                data[jmlData][6] = resultSet.getString("tahun");
+                data[jmlData][7] = resultSet.getString("harga");
+                data[jmlData][8] = resultSet.getString("stok");
                 jmlData++; //barisnya berpindah terus
             }
             return data;

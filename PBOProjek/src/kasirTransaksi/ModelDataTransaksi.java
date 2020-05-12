@@ -61,7 +61,7 @@ public class ModelDataTransaksi {
         }
     }
 
-    public void insertDataTransaksi(String tanggal, String id_buku, String buyer, String jumlah, String harga, String total) {
+    public void insertDataTransaksi(String tanggal, String id_buku, String buyer, String jumlah, String harga, String total,String id) {
         try {
             if ("".equals(id_buku) || "".equals(buyer) || "".equals(jumlah) || "".equals(harga)
                     || "".equals(total)) {
@@ -70,12 +70,13 @@ public class ModelDataTransaksi {
             } else {
                 String query = "INSERT INTO `catatan_transaksi` (`tanggal`,`id_buku`,`buyer`"
                         + ",`jumlah`,`harga`,`total`)"
-                        + " VALUESasd ('" + tanggal + "','" + id_buku + "','" + buyer + "','"
+                        + " VALUES ('" + tanggal + "','" + id_buku + "','" + buyer + "','"
                         + jumlah + "','" + harga + "','" + total + "')";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
                 System.out.println("Berhasil ditambahkan");
+                kurangiStok(jumlah,id);
                 JOptionPane.showMessageDialog(null, "Data Berhasil ditambah");
             }
         } catch (Exception sql) {
@@ -104,6 +105,11 @@ public class ModelDataTransaksi {
                     data[jmlData][2] = resultSet.getString("stok");
                     jmlData++; //barisnya berpindah terus
                     status = 1;
+
+                    if (jumlahINT > resultSet.getInt("stok")) {
+                        status = 0;
+                        throw new RuntimeException("Jumlah pembelian Melebihi Stok ! ");
+                    }
                 }
 
                 if (jmlData == 0) {
@@ -141,6 +147,34 @@ public class ModelDataTransaksi {
             if (total < 0) {
                 this.status = 1;
                 throw new RuntimeException("Uang yang dimasukkan tidak cukup");
+            }
+
+        } catch (Exception sql) {
+            System.out.println(sql.getMessage());
+            System.out.println("Error : " + sql.getMessage());
+            JOptionPane.showMessageDialog(null, sql.getMessage());
+        }
+        String total2 = Integer.toString(total);
+        return total2;
+    }
+
+    public String kurangiStok(String jumlah,String id) {
+        int total = 0;
+        try {
+            int beli = Integer.parseInt(jumlah);
+            int stok = Integer.parseInt(this.dataHome[0][6]);
+            int sisa = stok - beli;
+            int iden = Integer.parseInt(id);
+            if ("".equals(iden)) {
+                System.out.println("Gagal ditambahkan");
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+            } else {
+                String query = "UPDATE `buku` SET stok='" + sisa + "' WHERE id='" + id + "'";
+                //String '"+String+"' kalau Int "+int+"
+                statement = (Statement) koneksi.createStatement();
+                statement.executeUpdate(query); //execute querynya
+                System.out.println("Berhasil Diedit");
+                JOptionPane.showMessageDialog(null, "Data Berhasil Diedit");
             }
 
         } catch (Exception sql) {

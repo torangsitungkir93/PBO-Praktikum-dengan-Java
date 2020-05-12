@@ -44,14 +44,18 @@ public class ControllerDataBuku {
                 new MVCDashboardKasir();
             }
         });
-
+        
         viewDataBuku.btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listenerHome();
-                viewDataBuku.setVisible(true);
+                String cari = viewDataBuku.getSearch();
+
+                String dataNamaBuku[][] = modelDataBuku.searchBuku(cari);
+                vBuku.tabel.setModel((new JTable(dataNamaBuku, vBuku.kolom)).getModel());
+
             }
         });
+        
     }
 
     public void listenerHome() {

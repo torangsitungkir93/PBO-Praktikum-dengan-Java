@@ -44,7 +44,7 @@ public class ModelDataKasir {
         int jmlData = 0;
         try {
             statement = koneksi.createStatement();
-            String query = "Select * from `user`"; //pengambilan dara dalam java dari database
+            String query = "Select * from `user` where level="+2+""; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 jmlData++;
@@ -58,14 +58,14 @@ public class ModelDataKasir {
         }
     }
 
-    public void insertDataKasir(String username, String nama, String gender,String password) {
+    public void insertDataKasir(String username, String nama, String gender,String hp,String alamat) {
         try {
-            if ("".equals(username) || "".equals(nama) || "".equals(gender) || "".equals(password)) {
+            if ("".equals(username) || "".equals(nama) || "".equals(gender) || "".equals(alamat)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
-                String query = "INSERT INTO `user` (`username`,`nama`,`gender`,'password','level') "
-                        + "VALUES ('" + username + "','" + nama + "','" + gender + "','" +password +"',"+2+")";
+                String query = "INSERT INTO `user`(`username`, `nama`, `gender`,`no_hp`,`alamat`,`level`) "
+                        + "VALUES ('" + username + "','" + nama + "','" + gender + "','" + hp + "','" + alamat + "',"+2+")";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -108,9 +108,10 @@ public class ModelDataKasir {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("username");
-                data[jmlData][1] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][2] = resultSet.getString("no_hp");
-                data[jmlData][3] = resultSet.getString("alamat");
+                data[jmlData][1] = resultSet.getString("nama");
+                data[jmlData][2] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][3] = resultSet.getString("no_hp");
+                data[jmlData][4] = resultSet.getString("alamat");
                 jmlData++; //barisnya berpindah terus
             }
             return data;
@@ -153,7 +154,7 @@ public class ModelDataKasir {
             String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
             int num = Integer.parseInt(id);
 
-            String query = "Select * from `user` where level="+2+" AND id='" + id + "'"; //pengambilan dara dalam java dari database
+            String query = "Select * from `user` where level="+2+" AND username='" + id + "'"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("username");
@@ -171,12 +172,12 @@ public class ModelDataKasir {
         }
     }
 
-    public void deleteKasir(int id) {
+    public void deleteKasir(String id) {
         try {
             if ("".equals(id)) {
                 JOptionPane.showMessageDialog(null, "Gagal Dihapus\nPastikan Isi No Hp yang ingin dihapus benar !");
             } else {
-                String query = "DELETE FROM `user`  where level="+2+" AND `id` ='" + id + "'";
+                String query = "DELETE FROM `user`  where level="+2+" AND `username` ='" + id + "'";
                 statement = koneksi.createStatement();
                 statement.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");

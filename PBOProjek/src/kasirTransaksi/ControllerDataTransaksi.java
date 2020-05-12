@@ -89,7 +89,8 @@ public class ControllerDataTransaksi {
                 String data[][] = modelDataTransaksi.getDataHome();
                 String tanggal = viewDataTransaksi.tfTanggal.getText();
 //                (tanggal,data[0][3],data[0][4],data[0][6],data[0][2],data[0][5])
-                modelDataTransaksi.insertDataTransaksi(tanggal, data[0][3], data[0][4], data[0][6], data[0][2], data[0][5]);
+                modelDataTransaksi.insertDataTransaksi(tanggal, viewDataTransaksi.tfId.getText(), 
+                        data[0][4], data[0][6], data[0][2], data[0][5],data[0][3]);
                 viewDataTransaksi.setVisible(false);
                 new MVCDataTransaksi();
             }

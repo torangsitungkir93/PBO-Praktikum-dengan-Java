@@ -1,6 +1,5 @@
 package dataSupplier;
 
-
 import dataKasir.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,7 +57,7 @@ public class ModelDataSuplier {
             return 0;
         }
     }
-    
+
     public void insertDataSuplier(String nama, String hp, String alamat) {
         try {
             if ("".equals(nama) || "".equals(hp) || "".equals(alamat)) {
@@ -66,7 +65,7 @@ public class ModelDataSuplier {
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
                 String query = "INSERT INTO `suplier` (`nama`,`no_hp`,`alamat`) "
-                + "VALUES ('" + nama + "','" + hp + "','" + alamat+ "')";
+                        + "VALUES ('" + nama + "','" + hp + "','" + alamat + "')";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -79,7 +78,7 @@ public class ModelDataSuplier {
         }
     }
 
-    public void updateSuplier(int id,String nama, String hp, String alamat) {
+    public void updateSuplier(int id, String nama, String hp, String alamat) {
         try {
             if ("".equals(nama) || "".equals(hp) || "".equals(alamat)) {
                 System.out.println("Gagal ditambahkan");
@@ -121,14 +120,14 @@ public class ModelDataSuplier {
             return null;
         }
     }
-    
-        public String[][] searchSuplier(String nama) {
+
+    public String[][] searchSuplier(String nama) {
         try {
             int jmlData = 0;//menampung jumlah data
 
             String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
 
-            String query = "Select * from `suplier` where nama LIKE '%"+nama+"%'"; //pengambilan dara dalam java dari database
+            String query = "Select * from `suplier` where nama LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("id");
@@ -145,7 +144,7 @@ public class ModelDataSuplier {
             return null;
         }
     }
-    
+
     public String[][] readSatuSuplier(String id) {
         try {
             int jmlData = 0;//menampung jumlah data
@@ -170,7 +169,7 @@ public class ModelDataSuplier {
             return null;
         }
     }
-    
+
     public void deleteSuplier(int id) {
         try {
             if ("".equals(id)) {
