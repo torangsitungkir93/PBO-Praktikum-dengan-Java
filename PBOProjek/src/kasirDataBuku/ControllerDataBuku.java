@@ -29,7 +29,14 @@ public class ControllerDataBuku {
         this.viewDataBuku = vBuku;
         viewDataBuku.setVisible(true);
 
-             // Tombol di Menu Home;
+        if (ma.getBanyakData() != 0) {
+            String dataNamaSuplier[][] = ma.readBuku();
+            viewDataBuku.tabel.setModel((new JTable(dataNamaSuplier, viewDataBuku.kolom)).getModel());
+        } else {
+            JOptionPane.showMessageDialog(null, "Data Tidak Ada");
+        }
+
+        // Tombol di Menu Home;
         viewDataBuku.btnReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,14 +45,17 @@ public class ControllerDataBuku {
             }
         });
 
-//       viewHome.btnUbahPanel.addActionListener(new ActionListener() {
-//           @Override
-//            public void actionPerformed(ActionEvent e) {
-//                viewEdit.setVisible(true);
-//                setFormEdit(nomor);
-//                viewHome.setVisible(false);
-//           }
-//       });
+        viewDataBuku.btnSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listenerHome();
+                viewDataBuku.setVisible(true);
+            }
+        });
+    }
 
+    public void listenerHome() {
+        String data[][] = modelDataBuku.readBuku();
+        viewDataBuku.tabel.setModel(new JTable(data, viewDataBuku.kolom).getModel());
     }
 }

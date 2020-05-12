@@ -1,4 +1,4 @@
-package dataPribadiKasir;
+package kasirDataKasir;
 
 
 import java.sql.Connection;

@@ -18,7 +18,7 @@ public class ViewKasirDataBuku extends JFrame {
     JTable tabel;
     DefaultTableModel tabelModel;
     JScrollPane scrollPane;
-    Object kolom[] = {"ID Buku", "Judul", "Kategori", "Penerbit", "ISBN", "Suplier", "Tahun", "Bahasa", "Sinopsis"};
+    Object kolom[] = {"ID Buku", "Judul", "Kategori", "Penerbit", "ISBN", "Suplier", "Tahun", "Harga", "Stok"};
     
     GroupLayout gpPanelTop, gpPanelBack, gpPanelTabel, gpPanelLine;
     
@@ -26,7 +26,7 @@ public class ViewKasirDataBuku extends JFrame {
         setTitle("Data Buku");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setVisible(false);
+        setVisible(true);
         setSize(800,500);
         setLocationRelativeTo(null);
         
@@ -85,6 +85,10 @@ public class ViewKasirDataBuku extends JFrame {
         tfSearch.setBounds(270, 10, 250, 30);
         btnSearch.setBounds(10, 10, 250, 30);
 
+    }
+    
+    public String getSearch () {
+        return tfSearch.getText();
     }
     
     public static void main(String[] args) {

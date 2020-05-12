@@ -1,4 +1,4 @@
-package dataPribadiKasir;
+package kasirDataKasir;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,6 +11,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import kasirDataKasir.ViewKasirDataKasir;
+import kasirDataKasir.ViewKasirEditDataKasir;
 import menuKasir.MVCDashboardKasir;
 
 /**

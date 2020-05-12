@@ -6,7 +6,7 @@ package menuKasir;
  * and open the template in the editor.
  */
 
-import dataPribadiKasir.MVCKasirDataKasir;
+import kasirDataKasir.MVCKasirDataKasir;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import kasirDataBuku.MVCDataBuku;
+import kasirTransaksi.MVCDataTransaksi;
 import login.MVCLogin;
 
 /**
@@ -39,6 +40,15 @@ public class ControllerKasir {
                 viewHomeKasir.setVisible(false);
                 
                 new MVCKasirDataKasir();
+            }
+        });
+        
+        viewHomeKasir.btnTransaksi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewHomeKasir.setVisible(false);
+                
+                new MVCDataTransaksi();
             }
         });
         

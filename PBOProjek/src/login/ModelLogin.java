@@ -55,7 +55,7 @@ public class ModelLogin {
                 if (rs.next()) {
                     if (username.equals(rs.getString("username")) && pass.equals(rs.getString("password"))) {
                         
-                        if("L".equals(rs.getString("gender"))){
+                        if("1".equals(rs.getString("level"))){
                             login=1;
                             JOptionPane.showMessageDialog(null, "Berhasil Login Sebagai Admin");
                         }else{

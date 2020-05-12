@@ -1,6 +1,5 @@
 package kasirDataBuku;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -57,60 +56,25 @@ public class ModelDataBuku {
             return 0;
         }
     }
-    
-    public void insertDataKasir(String nama, String hp, String umur, String email, String note) {
-        try {
-            if ("".equals(nama) || "".equals(hp) || "".equals(umur) || "".equals(email)) {
-                System.out.println("Gagal ditambahkan");
-                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
-            } else {
-                String query = "INSERT INTO `kontak`(`nama`, `no_hp`, `umur`,`email`,`note`) VALUES ('" + nama + "','" + hp + "','" + umur + "','" + email + "','" + note + "')";//value 1 (id diskip)
-                //String '"+String+"' kalau Int "+int+"
-                statement = (Statement) koneksi.createStatement();
-                statement.executeUpdate(query); //execute querynya
-                System.out.println("Berhasil ditambahkan");
-                JOptionPane.showMessageDialog(null, "Data Berhasil ditambah");
-            }
-        } catch (Exception sql) {
-            System.out.println(sql.getMessage());
-            JOptionPane.showMessageDialog(null, sql.getMessage());
-        }
-    }
 
-    public void updateKontak(String nama, String hp, String umur, String email, String note) {
-        try {
-            if ("".equals(nama) || "".equals(hp) || "".equals(umur) || "".equals(email)) {
-                System.out.println("Gagal ditambahkan");
-                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
-            } else {
-                String query = "UPDATE `kontak` SET nama='" + nama + "',umur='" + umur + "',email='" + email + "',note='" + note
-                        + "' WHERE no_hp='" + hp + "'";
-                //String '"+String+"' kalau Int "+int+"
-                statement = (Statement) koneksi.createStatement();
-                statement.executeUpdate(query); //execute querynya
-                System.out.println("Berhasil Diedit");
-                JOptionPane.showMessageDialog(null, "Data Berhasil Diedit");
-            }
-        } catch (Exception sql) {
-            System.out.println(sql.getMessage());
-            JOptionPane.showMessageDialog(null, sql.getMessage());
-        }
-    }
-
-    public String[][] readKontak() {
+    public String[][] readBuku() {
         try {
             int jmlData = 0;//menampung jumlah data
 
-            String data[][] = new String[getBanyakData()][5]; //baris, kolom nya ada 3
-
-            String query = "Select * from `kontak`"; //pengambilan dara dalam java dari database
+            String data[][] = new String[getBanyakData()][9]; //baris, kolom nya ada 3
+            
+            String query = "Select * from `buku` INNER JOIN `suplier` ON buku.id=suplier.id"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
-                data[jmlData][0] = resultSet.getString("nama"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][1] = resultSet.getString("no_hp");
-                data[jmlData][2] = resultSet.getString("umur");
-                data[jmlData][3] = resultSet.getString("email");
-                data[jmlData][4] = resultSet.getString("note");
+                data[jmlData][0] = resultSet.getString("id");
+                data[jmlData][1] = resultSet.getString("judul"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][2] = resultSet.getString("kategori");
+                data[jmlData][3] = resultSet.getString("penerbit");
+                data[jmlData][4] = resultSet.getString("ISBN");
+                data[jmlData][5] = resultSet.getString("nama");
+                data[jmlData][6] = resultSet.getString("tahun");
+                data[jmlData][7] = resultSet.getString("harga");
+                data[jmlData][8] = resultSet.getString("stok");
                 jmlData++; //barisnya berpindah terus
             }
             return data;
@@ -121,20 +85,28 @@ public class ModelDataBuku {
             return null;
         }
     }
-    
-    public void deleteKontak(String hp) {
+
+    public String[][] searchSuplier(String nama) {
         try {
-            if ("".equals(hp)) {
-                JOptionPane.showMessageDialog(null, "Gagal Dihapus\nPastikan Isi No Hp yang ingin dihapus benar !");
-            } else {
-                String query = "DELETE FROM `kontak` WHERE `no_hp` ='" + hp + "'";
-                statement = koneksi.createStatement();
-                statement.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+            int jmlData = 0;//menampung jumlah data
+
+            String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
+
+            String query = "Select * from `suplier` where nama LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
+                data[jmlData][0] = resultSet.getString("id");
+                data[jmlData][1] = resultSet.getString("nama"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][2] = resultSet.getString("no_hp");
+                data[jmlData][3] = resultSet.getString("alamat");
+                jmlData++; //barisnya berpindah terus
             }
-        } catch (SQLException sql) {
-            System.out.println(sql.getMessage());
-            JOptionPane.showMessageDialog(null, sql.getMessage());
+            return data;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
         }
     }
 }

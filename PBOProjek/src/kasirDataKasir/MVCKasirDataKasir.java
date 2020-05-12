@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dataPribadiKasir;
+package kasirDataKasir;
+
+import kasirDataKasir.ViewKasirDataKasir;
+import kasirDataKasir.ViewKasirEditDataKasir;
 
 /**
  *
