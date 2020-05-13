@@ -24,7 +24,7 @@ public class ViewDataBuku extends JFrame {
     JTable tabel;
     DefaultTableModel tabelModel;
     JScrollPane scrollPane;
-    Object kolom[] = {"Judul", "Kategori", "Penerbit", "ISBN", "Suplier", "Tahun", "Harga", "Stok"};
+    Object kolom[] = {"ID","Judul", "Kategori", "Penerbit", "ISBN", "Suplier", "Tahun", "Harga", "Stok"};
     
     GroupLayout gpPanelTop, gpPanelBack, gpPanelTabel, gpPanelLine, gpPanelForm;
     
@@ -40,7 +40,7 @@ public class ViewDataBuku extends JFrame {
         tabel = new JTable(tabelModel);
         scrollPane = new JScrollPane(tabel);
         
-//        lId = new JLabel("Id Buku");
+        lId = new JLabel("Id Buku");
         lJudulB = new JLabel("Judul");
         lKategori = new JLabel("Kategori");
         lPenerbit = new JLabel("Penerbit");
@@ -55,7 +55,7 @@ public class ViewDataBuku extends JFrame {
         lJudul.setForeground(Color.WHITE);
         
         tfSearch = new JTextField();
-//        tfId = new JTextField();
+        tfId = new JTextField();
         tfJudulB = new JTextField();
         tfKategori = new JTextField();
         tfPenerbit = new JTextField();
@@ -123,7 +123,7 @@ public class ViewDataBuku extends JFrame {
         pPanelBack.add(btnEdit);
         pPanelBack.add(btnDel);
         pPanelBack.add(btnCancel);
-//        pPanelForm.add(lId);
+        pPanelForm.add(lId);
         pPanelForm.add(lJudulB);
         pPanelForm.add(lKategori);
         pPanelForm.add(lPenerbit);
@@ -132,7 +132,7 @@ public class ViewDataBuku extends JFrame {
         pPanelForm.add(lTahun);
         pPanelForm.add(lHarga);
         pPanelForm.add(lStok);
-//        pPanelForm.add(tfId);
+        pPanelForm.add(tfId);
         pPanelForm.add(tfJudulB);
         pPanelForm.add(tfKategori);
         pPanelForm.add(tfPenerbit);
@@ -142,7 +142,7 @@ public class ViewDataBuku extends JFrame {
         pPanelForm.add(tfHarga);
         pPanelForm.add(tfStok);
         
-//        lId.setBounds(10, 10, 100, 20);
+        lId.setBounds(10, 10, 100, 20);
         lJudulB.setBounds(10, 40, 100, 20);
         lKategori.setBounds(10, 70, 100, 20);
         lPenerbit.setBounds(10, 100, 100, 20);
@@ -151,7 +151,7 @@ public class ViewDataBuku extends JFrame {
         lTahun.setBounds(10, 190, 100, 20);
         lHarga.setBounds(10, 220, 100, 20);
         lStok.setBounds(10, 250, 100, 20);
-//        tfId.setBounds(100, 10, 100, 20);
+        tfId.setBounds(100, 10, 100, 20);
         tfJudulB.setBounds(100, 40, 100, 20);
         tfKategori.setBounds(100, 70, 100, 20);
         tfPenerbit.setBounds(100, 100, 100, 20);
@@ -200,6 +200,9 @@ public class ViewDataBuku extends JFrame {
     }
     public String getStok () {
         return tfStok.getText();
+    }
+     public String getId () {
+        return tfId.getText();
     }
     
     public static void main(String[] args) {

@@ -106,7 +106,6 @@ public class ControllerDataKasir {
             public void actionPerformed(ActionEvent e) {
                 String cari = viewDataKasir.getSearch();
 
-                listenerViewData();
                 String dataNamaSuplier[][] = modelDataKasir.searchKasir(cari);
                 vKasir.tabel.setModel((new JTable(dataNamaSuplier, vKasir.kolom)).getModel());
             }

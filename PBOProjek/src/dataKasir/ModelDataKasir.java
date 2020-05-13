@@ -127,15 +127,16 @@ public class ModelDataKasir {
         try {
             int jmlData = 0;//menampung jumlah data
 
-            String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
+            String data[][] = new String[getBanyakData()][6]; //baris, kolom nya ada 3
 
-            String query = "Select * from `user` where level="+2+" AND nama LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
+            String query = "Select * from `user` where level="+2+" AND username LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("username");
-                data[jmlData][1] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][2] = resultSet.getString("no_hp");
-                data[jmlData][3] = resultSet.getString("alamat");
+                data[jmlData][1] = resultSet.getString("nama");
+                data[jmlData][2] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][3] = resultSet.getString("no_hp");
+                data[jmlData][4] = resultSet.getString("alamat");
                 jmlData++; //barisnya berpindah terus
             }
             return data;

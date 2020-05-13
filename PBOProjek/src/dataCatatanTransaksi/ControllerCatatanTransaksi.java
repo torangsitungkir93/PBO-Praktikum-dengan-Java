@@ -29,7 +29,14 @@ public class ControllerCatatanTransaksi {
         this.viewDataTransaksi = vDataTransaksi;
         viewDataTransaksi.setVisible(true);
 
-             // Tombol di Menu Home;
+        if (ma.getBanyakData() != 0) {
+            String dataNamaSuplier[][] = ma.readTransaksi();
+            viewDataTransaksi.tabel.setModel((new JTable(dataNamaSuplier, viewDataTransaksi.kolom)).getModel());
+        } else {
+            JOptionPane.showMessageDialog(null, "Data Tidak Ada");
+        }
+
+        // Tombol di Menu Home;
         viewDataTransaksi.btnReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,16 +44,24 @@ public class ControllerCatatanTransaksi {
                 new MVCDashboardAdmin();
             }
         });
-        
 
-//       viewHome.btnUbahPanel.addActionListener(new ActionListener() {
-//           @Override
-//            public void actionPerformed(ActionEvent e) {
-//                viewEdit.setVisible(true);
-//                setFormEdit(nomor);
-//                viewHome.setVisible(false);
-//           }
-//       });
+        viewDataTransaksi.btnSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String cari = viewDataTransaksi.getSearch();
+
+                String dataTransaksi[][] = modelTransaksi.searchTransaksi(cari);
+                System.out.println("CEK DULU : "+cari);
+                vDataTransaksi.tabel.setModel((new JTable(dataTransaksi, vDataTransaksi.kolom)).getModel());
+
+            }
+        });
 
     }
+
+    public void listenerHome() {
+        String data[][] = modelTransaksi.readTransaksi();
+        viewDataTransaksi.tabel.setModel(new JTable(data, viewDataTransaksi.kolom).getModel());
+    }
+
 }

@@ -58,7 +58,7 @@ public class ModelDataBuku {
     }
 
     public void insertDataBuku(String judul, String kategori, String penerbit, String isbn,
-            String suplier, String tahun, int harga, int stok) {
+            String suplier, String tahun, String harga, String stok) {
         try {
             if ("".equals(judul) || "".equals(kategori) || "".equals(penerbit)
                     || "".equals(isbn) || "".equals(suplier) || "".equals(tahun)
@@ -66,10 +66,15 @@ public class ModelDataBuku {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
+
+                int suplier2 = Integer.parseInt(suplier);
+                int harga2 = Integer.parseInt(harga);
+                int stok2 = Integer.parseInt(stok);
+
                 String query = "INSERT INTO `buku` (`judul`,`kategori`,`penerbit`,`ISBN`,`suplier`"
                         + ",`tahun`,`harga`,`stok`) "
-                        + "VALUES ('" + judul + "','" + kategori + "','" + penerbit + "','" + isbn + "','" + suplier + "'"
-                        + ",'" + tahun + "','" + harga + "','" + stok + "')";
+                        + "VALUES ('" + judul + "','" + kategori + "','" + penerbit + "','" + isbn + "'," + suplier2 + ""
+                        + ",'" + tahun + "'," + harga2 + "," + stok2 + ")";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -82,13 +87,22 @@ public class ModelDataBuku {
         }
     }
 
-    public void updateSuplier(int id, String nama, String hp, String alamat) {
+    public void updateBuku(int id, String judul, String kategori, String penerbit, String isbn,
+            String suplier, String tahun, String harga, String stok) {
         try {
-            if ("".equals(nama) || "".equals(hp) || "".equals(alamat)) {
+            if ("".equals(id) || "".equals(judul) || "".equals(kategori) || "".equals(penerbit) || "".equals(isbn)
+                    || "".equals(suplier) || "".equals(tahun) || "".equals(harga) || "".equals(stok)) {
                 System.out.println("Gagal ditambahkan");
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
-                String query = "UPDATE `suplier` SET nama='" + nama + "',no_hp='" + hp + "',alamat='" + alamat + "' WHERE id='" + id + "'";
+                int suplier2 = Integer.parseInt(suplier);
+                int harga2 = Integer.parseInt(harga);
+                int stok2 = Integer.parseInt(stok);
+
+                String query = "UPDATE `buku` SET judul='" + judul + "',kategori='" + kategori + "'"
+                        + ",penerbit='" + penerbit + "',ISBN='" + isbn + "',suplier=" + suplier2
+                        + ",tahun='" + tahun + "',harga=" + harga2 + ",stok=" + stok2
+                        + "' WHERE id=" + id + "";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -101,19 +115,24 @@ public class ModelDataBuku {
         }
     }
 
-    public String[][] readSuplier() {
+    public String[][] readBuku() {
         try {
             int jmlData = 0;//menampung jumlah data
 
-            String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
+            String data[][] = new String[getBanyakData()][9]; //baris, kolom nya ada 3
 
-            String query = "Select * from `suplier`"; //pengambilan dara dalam java dari database
+            String query = "Select * from `buku`"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("id");
-                data[jmlData][1] = resultSet.getString("nama"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][2] = resultSet.getString("no_hp");
-                data[jmlData][3] = resultSet.getString("alamat");
+                data[jmlData][1] = resultSet.getString("judul");
+                data[jmlData][2] = resultSet.getString("kategori"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][3] = resultSet.getString("penerbit");
+                data[jmlData][4] = resultSet.getString("ISBN");
+                data[jmlData][5] = resultSet.getString("suplier");
+                data[jmlData][6] = resultSet.getString("tahun");
+                data[jmlData][7] = resultSet.getString("harga");
+                data[jmlData][8] = resultSet.getString("stok");
                 jmlData++; //barisnya berpindah terus
             }
             return data;
@@ -125,19 +144,24 @@ public class ModelDataBuku {
         }
     }
 
-    public String[][] searchSuplier(String nama) {
+    public String[][] searchBuku(String nama) {
         try {
             int jmlData = 0;//menampung jumlah data
 
-            String data[][] = new String[getBanyakData()][4]; //baris, kolom nya ada 3
+            String data[][] = new String[getBanyakData()][9]; //baris, kolom nya ada 3
 
-            String query = "Select * from `suplier` where nama LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
+            String query = "Select * from `buku` where nama judul '%" + nama + "%'"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("id");
-                data[jmlData][1] = resultSet.getString("nama"); //kolom nama harus sama besar kecilnya dgn database
-                data[jmlData][2] = resultSet.getString("no_hp");
-                data[jmlData][3] = resultSet.getString("alamat");
+                data[jmlData][1] = resultSet.getString("judul");
+                data[jmlData][2] = resultSet.getString("kategori"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][3] = resultSet.getString("penerbit");
+                data[jmlData][4] = resultSet.getString("ISBN");
+                data[jmlData][5] = resultSet.getString("suplier");
+                data[jmlData][6] = resultSet.getString("tahun");
+                data[jmlData][7] = resultSet.getString("harga");
+                data[jmlData][8] = resultSet.getString("stok");
                 jmlData++; //barisnya berpindah terus
             }
             return data;
@@ -174,12 +198,12 @@ public class ModelDataBuku {
         }
     }
 
-    public void deleteSuplier(int id) {
+    public void deleteBuku(int id) {
         try {
             if ("".equals(id)) {
                 JOptionPane.showMessageDialog(null, "Gagal Dihapus\nPastikan Isi No Hp yang ingin dihapus benar !");
             } else {
-                String query = "DELETE FROM `suplier` WHERE `id` ='" + id + "'";
+                String query = "DELETE FROM `buku` WHERE `id` ='" + id + "'";
                 statement = koneksi.createStatement();
                 statement.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
