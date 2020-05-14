@@ -102,7 +102,7 @@ public class ModelDataBuku {
                 String query = "UPDATE `buku` SET judul='" + judul + "',kategori='" + kategori + "'"
                         + ",penerbit='" + penerbit + "',ISBN='" + isbn + "',suplier=" + suplier2
                         + ",tahun='" + tahun + "',harga=" + harga2 + ",stok=" + stok2
-                        + "' WHERE id=" + id + "";
+                        + " WHERE id=" + id + "";
                 //String '"+String+"' kalau Int "+int+"
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
@@ -150,7 +150,7 @@ public class ModelDataBuku {
 
             String data[][] = new String[getBanyakData()][9]; //baris, kolom nya ada 3
 
-            String query = "Select * from `buku` where nama judul '%" + nama + "%'"; //pengambilan dara dalam java dari database
+            String query ="Select * from `buku` INNER JOIN `suplier` ON buku.id=suplier.id where judul LIKE '%" + nama + "%'"; //pengambilan dara dalam java dari database
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
                 data[jmlData][0] = resultSet.getString("id");

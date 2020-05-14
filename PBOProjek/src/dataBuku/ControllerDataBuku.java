@@ -71,7 +71,7 @@ public class ControllerDataBuku {
         viewDataBuku.btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(viewDataBuku.getId());
+//                int id = Integer.parseInt(viewDataBuku.getId());
                 String judul = viewDataBuku.getJudulB();
                 String kategori = viewDataBuku.getKategori();
                 String penerbit = viewDataBuku.getPenerbit();
@@ -124,7 +124,7 @@ public class ControllerDataBuku {
 
     public void resetFormBuku() {
         viewDataBuku.tfId.setText("");
-        viewDataBuku.tfId.setEditable(true);
+        viewDataBuku.tfId.setEditable(false);
         viewDataBuku.tfJudulB.setText("");
         viewDataBuku.tfKategori.setText("");
         viewDataBuku.tfPenerbit.setText("");
@@ -145,6 +145,7 @@ public class ControllerDataBuku {
         viewDataBuku.btnCancel.setEnabled(false);
         viewDataBuku.btnDel.setEnabled(false);
         viewDataBuku.btnEdit.setEnabled(false);
+        viewDataBuku.tfId.setEditable(false);
 
         viewDataBuku.tabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

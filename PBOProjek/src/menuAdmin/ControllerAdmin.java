@@ -15,7 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import login.MVCLogin;
+import login.*;
 
 /**
  *
@@ -30,13 +30,12 @@ public class ControllerAdmin {
     ViewDataAdmin viewDataAdmin;
     ViewEditDataAdmin viewEditDataAdmin;
 
-    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin, ViewDataAdmin vAdmin,ViewEditDataAdmin vEAdmin) {
+    public ControllerAdmin(ModelAdmin ma, ViewHomeAdmin vHomeAdmin, ViewDataAdmin vAdmin, ViewEditDataAdmin vEAdmin) {
         this.modelAdmin = ma;
         this.viewHomeAdmin = vHomeAdmin;
         this.viewDataAdmin = vAdmin;
-         this.viewEditDataAdmin = vEAdmin;
-        
-        
+        this.viewEditDataAdmin = vEAdmin;
+
         viewHomeAdmin.btnDataAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,13 +79,12 @@ public class ControllerAdmin {
         viewHomeAdmin.btnLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new MVCLogin2();
                 viewHomeAdmin.setVisible(false);
-
-                MVCLogin login = new MVCLogin();
             }
         });
-        
-         // Untuk Data Admin
+
+        // Untuk Data Admin
         viewDataAdmin.btnReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

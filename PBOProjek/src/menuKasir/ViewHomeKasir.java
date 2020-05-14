@@ -1,4 +1,4 @@
-package menuKasir;
+ package menuKasir;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -28,7 +28,7 @@ public class ViewHomeKasir extends JFrame {
         lJudul = new JLabel("WELCOME USER");
         lJudul.setFont(new Font("COURIER NEW", Font.BOLD, 30));
         lJudul.setForeground(Color.BLACK);
-        lNamaAdmin = new JLabel("Rangto Tusingkir");
+        lNamaAdmin = new JLabel("KASIR NAME");
         lNamaAdmin.setFont(new Font("COURIER NEW", Font.PLAIN, 22));
         lNamaToko = new JLabel("Attala");
         lNamaToko.setFont(new Font("COURIER NEW", Font.PLAIN, 22));
