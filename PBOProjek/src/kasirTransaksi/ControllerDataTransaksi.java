@@ -144,10 +144,10 @@ public class ControllerDataTransaksi {
         // judul, String harga, String stok,String id,String pembeli,String subTotal,String jumlah
         String data[][] = modelDataTransaksi.getDataHome();
 
-        viewDataTransaksi.tfId.setText(data[0][4].toString());
+        viewDataTransaksi.tfId.setText(data[0][3].toString());
         viewDataTransaksi.tfJudulB.setText(data[0][0].toString());
         viewDataTransaksi.tfHarga.setText(data[0][1].toString());
-        viewDataTransaksi.tfNama.setText(data[0][3].toString());
+        viewDataTransaksi.tfNama.setText(data[0][4].toString());
         viewDataTransaksi.tfTotal.setText(data[0][5].toString());
         viewDataTransaksi.tfTotal.setForeground(Color.red);
         viewDataTransaksi.tfSubtotal.setText(data[0][5].toString());
