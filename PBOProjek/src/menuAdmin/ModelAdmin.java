@@ -81,6 +81,31 @@ public class ModelAdmin {
         }
     }
     
+     public String[][] readAdmin() {
+        try {
+            int jmlData = 0;//menampung jumlah data
+
+            String data[][] = new String[getBanyakData()][7]; //baris, kolom nya ada 3
+
+            String query = "Select * from `user` where level="+1+""; //pengambilan dara dalam java dari database
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) { //lanjut kedata selanjutnya jmlData bertambah
+                data[jmlData][0] = resultSet.getString("username");
+                data[jmlData][1] = resultSet.getString("nama");
+                data[jmlData][2] = resultSet.getString("gender"); //kolom nama harus sama besar kecilnya dgn database
+                data[jmlData][3] = resultSet.getString("no_hp");
+                data[jmlData][4] = resultSet.getString("alamat");
+                jmlData++; //barisnya berpindah terus
+            }
+            return data;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+        }
+    }
+    
        
     
 }

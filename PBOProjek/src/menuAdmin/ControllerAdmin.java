@@ -9,6 +9,7 @@ import dataBuku.MVCDataBuku;
 import dataCatatanTransaksi.MVCDataCatatanTransaksi;
 import dataKasir.MVCDataKasir;
 import dataSupplier.MVCDataSuplier;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -41,6 +42,7 @@ public class ControllerAdmin {
             public void actionPerformed(ActionEvent e) {
                 viewHomeAdmin.setVisible(false);
                 viewDataAdmin.setVisible(true);
+                listenerHome();
             }
         });
 
@@ -108,5 +110,27 @@ public class ControllerAdmin {
                 viewEditDataAdmin.setVisible(true);
             }
         });
+    }
+
+    public void listenerHome() {
+        String data[][] = modelAdmin.readAdmin();
+
+        viewDataAdmin.tfUsername.setText(data[0][0].toString());
+        viewDataAdmin.tfUsername.setForeground(Color.red);
+        viewDataAdmin.tfUsername.setEditable(false);
+        viewDataAdmin.tfNama.setText(data[0][1].toString());
+        viewDataAdmin.tfNama.setEditable(false);
+
+        if (data[0][2].equals("L")) {
+            viewDataAdmin.r1.setSelected(true);
+        } else if (data[0][2].equals("P")) {
+            viewDataAdmin.r2.setSelected(true);
+          
+        }
+
+        viewDataAdmin.tfNoTelp.setText(data[0][3].toString());
+        viewDataAdmin.tfNoTelp.setEditable(false);
+        viewDataAdmin.tfAlamat.setText(data[0][4].toString());
+        viewDataAdmin.tfAlamat.setEditable(false);
     }
 }

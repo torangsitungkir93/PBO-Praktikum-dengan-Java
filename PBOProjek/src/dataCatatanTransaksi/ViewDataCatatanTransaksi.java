@@ -18,7 +18,7 @@ public class ViewDataCatatanTransaksi extends JFrame {
     JTable tabel;
     DefaultTableModel tabelModel;
     JScrollPane scrollPane;
-    Object kolom[] = {"No Transaksi", "Tanggal", "ID Buku", "Buyer", "Jumlah", "Harga", "Total"};
+    Object kolom[] = {"No Transaksi", "Tanggal", "Judul", "Buyer", "Jumlah", "Harga", "Total"};
     
     GroupLayout gpPanelTop, gpPanelBack, gpPanelTabel, gpPanelLine;
     
