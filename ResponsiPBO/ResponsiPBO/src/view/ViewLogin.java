@@ -1,5 +1,3 @@
-package view;
-
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -26,12 +24,12 @@ public class ViewLogin extends JFrame {
         setLocationRelativeTo(null);
 
         lJudul = new JLabel("LOGIN");
-        lJudul.setFont(new Font("COURIER NEW", Font.BOLD, 30));
+        lJudul.setFont(new Font("HELVETICA", Font.BOLD, 30));
         lJudul.setForeground(Color.BLACK);
         lUsername = new JLabel("Username");
-        lUsername.setFont(new Font("COURIER NEW", Font.PLAIN, 24));
+        lUsername.setFont(new Font("HELVETICA", Font.PLAIN, 24));
         lPassword = new JLabel("Password");
-        lPassword.setFont(new Font("COURIER NEW", Font.PLAIN, 24));
+        lPassword.setFont(new Font("HELVETICA", Font.PLAIN, 24));
 
         tfUsername = new JTextField();
 

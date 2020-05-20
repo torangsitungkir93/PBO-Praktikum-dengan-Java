@@ -1,5 +1,3 @@
-package view;
-
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -19,7 +17,7 @@ public class ViewMenu extends JFrame {
         setTitle("Home");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setSize(400, 500);
         setLocationRelativeTo(null);
         
@@ -36,7 +34,7 @@ public class ViewMenu extends JFrame {
         lDeskripsi1.setFont(new Font("COURIER NEW", Font.PLAIN, 24));
         lDeskripsi2 = new JLabel("Silakan Pilih Menu");
         lDeskripsi2.setFont(new Font("COURIER NEW", Font.PLAIN, 20));
-        lDeskripsi3 = new JLabel("-- Perpustakaan UPN Yogyakarta --");
+        lDeskripsi3 = new JLabel("");
         lDeskripsi3.setFont(new Font("COURIER NEW", Font.PLAIN, 15));
 
         ImageIcon pinjamIcon = new ImageIcon(getClass().getResource("/images/iconRegister1.png"));

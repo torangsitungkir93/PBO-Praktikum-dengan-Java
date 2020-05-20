@@ -16,11 +16,11 @@ public class MVC {
  // D
     ModelPerpus model = new ModelPerpus ();
  //VIEW
-    ViewLogin viewLogin = new ViewLogin ();
+    ViewLogin viewLogin = new ViewLogin();
     ViewPinjam viewPinjam = new ViewPinjam();
-    ViewMenu viewMenu = new ViewMenu ();
+    ViewMenu viewMenu = new ViewMenu();
     ViewAbout viewAbout = new ViewAbout();
     ViewTampil viewTampil = new ViewTampil();
  //CONTROLLER
-    ControlPerpus controller = new ControlPerpus(model,viewTampil);
+    ControlPerpus controller = new ControlPerpus(model,viewLogin,viewPinjam,viewMenu,viewAbout,viewTampil);
 }

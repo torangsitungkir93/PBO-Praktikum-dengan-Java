@@ -1,5 +1,3 @@
-package view;
-
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -12,7 +10,7 @@ public class ViewPinjam extends JFrame {
     JLabel lJudul, lIdAngg, lNamaAngg, lIdBuku, lJudulBuku;
     JTextField tfIdAngg, tfNamaAngg, tfIdBuku, tfJudulBuku;
 
-    JButton btnHome, btnAdd, btnCancel;
+    JButton btnHome, btnAdd, btnCancel,btnTampil;
 
     GroupLayout gpPanelBack, gpPanelBox;
 
@@ -20,7 +18,7 @@ public class ViewPinjam extends JFrame {
         setTitle("Pinjam Buku");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setSize(400, 500);
         setLocationRelativeTo(null);
 
@@ -49,6 +47,7 @@ public class ViewPinjam extends JFrame {
         btnHome = new JButton(homeIcon);
         btnAdd = new JButton("Tambah", addIcon);
         btnCancel = new JButton("Batal", cancelIcon);
+        btnTampil = new JButton("Tampil");
 
         gpPanelBack = new GroupLayout(pPanelBack);
         pPanelBack.setLayout(gpPanelBack);
@@ -75,6 +74,7 @@ public class ViewPinjam extends JFrame {
         pPanelBox.add(btnHome);
         pPanelBox.add(btnAdd);
         pPanelBox.add(btnCancel);
+        pPanelBox.add(btnTampil);
 
         lJudul.setBounds(95, 30, 300, 40);
 
@@ -91,6 +91,7 @@ public class ViewPinjam extends JFrame {
         btnHome.setBounds(10, 10, 50, 30);
         btnAdd.setBounds(50, 320, 120, 30);
         btnCancel.setBounds(180, 320, 120, 30);
+        btnTampil.setBounds(110, 370, 120, 30);
     }
 
     public String getIdAnggota() {

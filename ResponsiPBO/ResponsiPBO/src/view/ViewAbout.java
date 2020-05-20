@@ -1,5 +1,3 @@
-package view;
-
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -19,7 +17,7 @@ public class ViewAbout extends JFrame {
         setTitle("About Us");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setSize(400, 500);
         setLocationRelativeTo(null);
         
@@ -30,13 +28,13 @@ public class ViewAbout extends JFrame {
         imgAbout1.setIcon(aboutIcon);
         
         lJudul = new JLabel("ABOUT US");
-        lJudul.setFont(new Font("HELVETICA", Font.BOLD, 29));
+        lJudul.setFont(new Font("HELVETICA", Font.BOLD, 30));
         lJudul.setForeground(Color.BLACK);
-        lDeskripsi1 = new JLabel("Perpustakaan UPN");
+        lDeskripsi1 = new JLabel("Perpustakaan UPN JOGJA");
         lDeskripsi1.setFont(new Font("HELVETICA", Font.PLAIN, 20));
         lDeskripsi2 = new JLabel("081397752892");
         lDeskripsi2.setFont(new Font("HELVETICA", Font.PLAIN, 20));
-        lDeskripsi3 = new JLabel("Jl. Barbarsari no 77 Yogya");
+        lDeskripsi3 = new JLabel("Jl. Dirgantara No 77 Yogya");
         lDeskripsi3.setFont(new Font("HELVETICA", Font.PLAIN, 20));
 
         ImageIcon homeIcon = new ImageIcon(getClass().getResource("/images/iconHome1.png"));
@@ -65,12 +63,12 @@ public class ViewAbout extends JFrame {
         pPanelBox.add(btnHome);
 
         lJudul.setBounds(100, 60, 300, 40);
-        imgAbout.setBounds(255, 58, 300, 40);
+        imgAbout.setBounds(265, 58, 300, 40);
         imgAbout1.setBounds(65, 58, 300, 40);
 
-        lDeskripsi1.setBounds(20, 150, 300, 40);
-        lDeskripsi2.setBounds(20, 180, 300, 40);
-        lDeskripsi3.setBounds(20, 210, 300, 40);
+        lDeskripsi1.setBounds(50, 150, 300, 40);
+        lDeskripsi2.setBounds(100, 210, 250, 40);
+        lDeskripsi3.setBounds(48, 180, 300, 40);
 
         btnHome.setBounds(10, 10, 50, 30);
     }
